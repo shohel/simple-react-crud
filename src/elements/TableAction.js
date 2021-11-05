@@ -15,14 +15,15 @@ const TableAction = () => {
 		e.preventDefault();
 
 		flowDispatch( { type: 'bulk_action', playload : action } );
+		setAction( '' );
 	}
 
 	return (
 		<div className={'table-action-wrap'}>
 			<div className={'action-dropdown-wrap'}>
 
-				<select onChange={ e => { onChangeActionHandler( e ) } } >
-					<option value="">Bulk Action</option>
+				<select value={action} onChange={ e => { onChangeActionHandler( e ) } } >
+					<option value="" >Bulk Action</option>
 					<option value="delete">Delete</option>
 				</select>
 
