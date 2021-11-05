@@ -1,5 +1,6 @@
 import React from 'react';
 import {useFlowContext} from '../FlowContext';
+import TableAction from './TableAction';
 
 const Table = () => {
 	const {flowState, flowDispatch} = useFlowContext();
@@ -14,6 +15,8 @@ const Table = () => {
 
 	return (
 		<>
+			<TableAction />
+
 			<table>
 				<thead>
 					<tr>
@@ -34,9 +37,9 @@ const Table = () => {
 						</tr>
 					})}
 				</tbody>
-
-
 			</table>
+
+			<TableAction />
 		</>
 	);
 }

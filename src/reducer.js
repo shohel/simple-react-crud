@@ -19,6 +19,15 @@ const reducer = (state, action) => {
 
 			return [...state, ...[action.playload.newFlow]];
 
+		case 'bulk_action':
+
+			if ( 'delete' === action.playload ) {
+				return state.filter( flow => {
+					return !flow.is_checked;
+				} );
+			}
+
+			return state;
 		default:
 			return state;
 	}

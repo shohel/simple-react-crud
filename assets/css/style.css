@@ -239,6 +239,12 @@ th {
   margin: 50px;
 }
 
+#page-main button, #page-main select {
+  background-color: #F5F6F8;
+  border: 1px solid #DFDFDF;
+  border-radius: 2px;
+  padding: 10px 15px;
+}
 #page-main .button-primary {
   background-color: #F06437;
   border: 1px solid #e0572b;
@@ -252,6 +258,11 @@ th {
 }
 #page-main .app-wrap p {
   margin: 0;
+}
+#page-main .app-wrap .action-dropdown-wrap {
+  display: flex;
+  margin: 10px 0;
+  column-gap: 10px;
 }
 #page-main .app-wrap .list-header {
   display: flex;

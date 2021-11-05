@@ -20,7 +20,6 @@ function Header() {
 		}
 
 		flowDispatch( { type : 'add_new_flow', playload : { newFlow : newFlow } } );
-
 	}
 
 	const element = (

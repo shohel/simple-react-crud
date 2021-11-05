@@ -1,4 +1,11 @@
 #page-main{
+  button, select{
+    background-color: #F5F6F8;
+    border: 1px solid #DFDFDF;
+    border-radius: 2px;
+    padding: 10px 15px;
+  }
+
   .button-primary{
     background-color: #F06437;
     border: 1px solid #e0572b;
@@ -13,6 +20,12 @@
     border: 1px solid #dddddd;
     p{
       margin: 0;
+    }
+
+    .action-dropdown-wrap{
+      display: flex;
+      margin: 10px 0;
+      column-gap: 10px;
     }
 
     .list-header{
