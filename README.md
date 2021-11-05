@@ -14,3 +14,7 @@ Run the following commands after cloning and change the terminal directory to th
 ## Production Build
 
 > `npm run build`
+
+## Live Preview
+
+[https://shohel.github.io/simple-react-crud/](https://shohel.github.io/simple-react-crud/)
