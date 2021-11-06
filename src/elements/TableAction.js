@@ -29,7 +29,6 @@ const TableAction = () => {
 				</select>
 
 				<button onClick={ e => { onApplyAction( e ) } }> Apply </button>
-
 			</div>
 
 			<div className={'action-flows-count'}>

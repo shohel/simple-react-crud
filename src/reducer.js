@@ -1,4 +1,6 @@
 
+import defaultFlows from './Data';
+
 const reducer = (state, action) => {
 	switch ( action.type ) {
 		case 'toggle_select':
@@ -36,6 +38,17 @@ const reducer = (state, action) => {
 			let new_state = [...state];
 			new_state[flow_index] = {...new_state[flow_index], name: flow_name}
 			return new_state;
+
+		case 'search_flows' :
+			let search_term = action.playload.search_term.toLowerCase();
+
+			if ( search_term.length ) {
+				return defaultFlows.filter( flow => {
+					return flow.name.toLowerCase().includes( search_term );
+				} );
+			}
+
+			return defaultFlows;
 
 		default:
 			return state;

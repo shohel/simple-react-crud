@@ -1,21 +1,22 @@
 import React from 'react';
 import {useFlowContext} from '../FlowContext';
+import TableFilter from './TableFilter'
 import TableAction from './TableAction';
 
 const Table = () => {
 	const {flowState, flowDispatch} = useFlowContext();
 
 	const toggleSelect = ( flow_id ) => {
-		flowDispatch( { type : 'toggle_select', playload: { select_id : flow_id } } )
+		flowDispatch( {type: 'toggle_select', playload: {select_id: flow_id}} )
 	}
 
 	const toggleSelectAll = ( e ) => {
-		flowDispatch( { type: 'toggle_all', checked : e.target.checked } );
+		flowDispatch( {type: 'toggle_all', checked: e.target.checked} );
 	}
 
 	const rowDelete = ( flow_index, e ) => {
 		e.preventDefault();
-		flowDispatch( { type: 'delete_row', playload : { flow_index : flow_index } } );
+		flowDispatch( {type: 'delete_row', playload: {flow_index: flow_index}} );
 	}
 
 	const editRow = ( flow_index, e ) => {
@@ -28,12 +29,13 @@ const Table = () => {
 			return;
 		}
 
-		flowDispatch( { type: 'update_flow_name', playload : { flow_index : flow_index, new_name : flowName } } );
+		flowDispatch( {type: 'update_flow_name', playload: {flow_index: flow_index, new_name: flowName}} );
 	}
 
 	return (
 		<>
-			<TableAction />
+			<TableFilter/>
+			<TableAction/>
 
 			{flowState.length ?
 
@@ -73,7 +75,7 @@ const Table = () => {
 										editRow( index, e )
 									}}>Edit
 									</a>
-									<span className={'action-divider'}> | </span>
+									<span className={'action-divider'}>|</span>
 									<a href="#" onClick={e => {
 										rowDelete( index, e )
 									}}>Delete
@@ -83,16 +85,13 @@ const Table = () => {
 						} )}
 					</tbody>
 				</table>
-
 				:
-
 				<div className={'nodata-jumbotron'}>
-					<h3> There is no available flows to show </h3>
+					<h3>There is no available flows to show</h3>
 				</div>
-
 			}
 
-			<TableAction />
+			<TableAction/>
 		</>
 	);
 }

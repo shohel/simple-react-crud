@@ -19,12 +19,36 @@
     padding: 10px 15px;
   }
 
+  .search-input-group{
+    display: flex;
+    align-items: stretch;
+
+    input, button{
+      border: 1px solid #DFDFDF;
+      line-height: 40px;
+      padding: 0 10px;
+      border-radius: 0;
+    }
+
+    button{
+      margin-left: -1px;
+    }
+  }
 
   .app-wrap{
     padding: 20px;
     border: 1px solid #dddddd;
     p{
       margin: 0;
+    }
+
+    .flows-filter-wrap{
+      display: flex;
+      align-items: center;
+
+      .flows-active-text-wrap{
+        flex: 1;
+      }
     }
 
     .table-action-wrap {
@@ -67,14 +91,14 @@
         border-top: 1px solid #DFDFDF;
 
         th{
-          padding: 10px 20px;
+          padding: 10px 15px;
         }
         th:last-child, td:last-child{
           text-align: right;
         }
 
         td{
-          padding: 15px 20px;
+          padding: 10px 15px;
 
           &.status-col{
             color: #62727e;
