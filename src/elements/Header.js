@@ -5,7 +5,7 @@ function Header() {
 	const {flowState, flowDispatch} = useFlowContext();
 
 	const addNewFlow = () => {
-		let flowName = prompt( "Please enter the flow name" );
+		let flowName = prompt( "Enter the flow name" );
 
 		if ( !flowName || !flowName.length ) {
 			return;

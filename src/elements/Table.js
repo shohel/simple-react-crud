@@ -18,6 +18,19 @@ const Table = () => {
 		flowDispatch( { type: 'delete_row', playload : { flow_index : flow_index } } );
 	}
 
+	const editRow = ( flow_index, e ) => {
+		e.preventDefault();
+
+		let oldFlowName = flowState[flow_index].name;
+		let flowName = prompt( "Enter the flow name", oldFlowName );
+
+		if ( !flowName || !flowName.length ) {
+			return;
+		}
+
+		flowDispatch( { type: 'update_flow_name', playload : { flow_index : flow_index, new_name : flowName } } );
+	}
+
 	return (
 		<>
 			<TableAction />
@@ -39,7 +52,7 @@ const Table = () => {
 							<td> { flow.name } </td>
 							<td className={'status-col'}> <p>{flow.status} <br /> {flow.date} </p> </td>
 							<td>
-								<a href="#"> Edit </a> |
+								<a href="#" onClick={ e => { editRow( index, e ) } }> Edit </a> |
 								<a href="#" onClick={ e => { rowDelete( index, e ) } }> Delete </a>
 							</td>
 						</tr>

@@ -29,6 +29,14 @@ const reducer = (state, action) => {
 			return state;
 		case 'delete_row':
 			return [...state.slice( 0, action.playload.flow_index ), ...state.slice( action.playload.flow_index + 1 )];
+		case 'update_flow_name':
+			let flow_index = action.playload.flow_index;
+			let flow_name = action.playload.new_name;
+
+			let new_state = [...state];
+			new_state[flow_index] = {...new_state[flow_index], name: flow_name}
+			return new_state;
+
 		default:
 			return state;
 	}
