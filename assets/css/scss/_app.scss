@@ -27,10 +27,16 @@
       margin: 0;
     }
 
-    .action-dropdown-wrap{
+    .table-action-wrap {
       display: flex;
+      align-items: center;
       margin: 10px 0;
-      column-gap: 10px;
+
+      .action-dropdown-wrap {
+        display: flex;
+        column-gap: 10px;
+        flex: 1;
+      }
     }
 
     .list-header{
@@ -74,9 +80,22 @@
             color: #62727e;
             font-size: 0.8em;
           }
+
+          .action-divider{
+            padding: 0 5px;
+            color: #384556;
+          }
         }
       }
     }
 
   }
+
+  .nodata-jumbotron{
+    border: 1px solid #DFDFDF;
+    color: #62727e;
+    padding: 20px;
+    text-align: center;
+  }
+
 }

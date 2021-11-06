@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useFlowContext} from '../FlowContext';
+import PluralText from '../utils/PluralText';
 
 
 const TableAction = () => {
@@ -29,6 +30,10 @@ const TableAction = () => {
 
 				<button onClick={ e => { onApplyAction( e ) } }> Apply </button>
 
+			</div>
+
+			<div className={'action-flows-count'}>
+				<PluralText count={flowState.length} singular={'Item'} plural={'Items'} show_count={true} />
 			</div>
 
 		</div>

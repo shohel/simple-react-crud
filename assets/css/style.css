@@ -263,10 +263,15 @@ th {
 #page-main .app-wrap p {
   margin: 0;
 }
-#page-main .app-wrap .action-dropdown-wrap {
+#page-main .app-wrap .table-action-wrap {
   display: flex;
+  align-items: center;
   margin: 10px 0;
+}
+#page-main .app-wrap .table-action-wrap .action-dropdown-wrap {
+  display: flex;
   column-gap: 10px;
+  flex: 1;
 }
 #page-main .app-wrap .list-header {
   display: flex;
@@ -303,6 +308,16 @@ th {
 #page-main .app-wrap table tr td.status-col {
   color: #62727e;
   font-size: 0.8em;
+}
+#page-main .app-wrap table tr td .action-divider {
+  padding: 0 5px;
+  color: #384556;
+}
+#page-main .nodata-jumbotron {
+  border: 1px solid #DFDFDF;
+  color: #62727e;
+  padding: 20px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

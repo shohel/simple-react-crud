@@ -35,30 +35,62 @@ const Table = () => {
 		<>
 			<TableAction />
 
-			<table>
-				<thead>
-					<tr>
-						<th> <input type="checkbox" onChange={ e => { toggleSelectAll( e ) } } /> </th>
-						<th> Name </th>
-						<th> Status </th>
-						<th> <strong> Actions </strong> </th>
-					</tr>
-				</thead>
+			{flowState.length ?
 
-				<tbody>
-					{flowState.map( (flow, index) => {
-						return <tr key={flow.id}>
-							<td> <input type="checkbox" checked={flow.is_checked} onChange={ e => { toggleSelect( flow.id ) } } /> </td>
-							<td> { flow.name } </td>
-							<td className={'status-col'}> <p>{flow.status} <br /> {flow.date} </p> </td>
-							<td>
-								<a href="#" onClick={ e => { editRow( index, e ) } }> Edit </a> |
-								<a href="#" onClick={ e => { rowDelete( index, e ) } }> Delete </a>
-							</td>
+				<table>
+					<thead>
+						<tr>
+							<th>
+								<input type="checkbox" onChange={e => {
+									toggleSelectAll( e )
+								}}/>
+							</th>
+							<th>Name</th>
+							<th>Status</th>
+							<th>
+								<strong>Actions</strong>
+							</th>
 						</tr>
-					})}
-				</tbody>
-			</table>
+					</thead>
+
+					<tbody>
+						{flowState.map( ( flow, index ) => {
+							return <tr key={flow.id}>
+								<td>
+									<input type="checkbox" checked={flow.is_checked} onChange={e => {
+										toggleSelect( flow.id )
+									}}/>
+								</td>
+								<td> {flow.name} </td>
+								<td className={'status-col'}>
+									<p>{flow.status}
+										<br/>
+										{flow.date}
+									</p>
+								</td>
+								<td>
+									<a href="#" onClick={e => {
+										editRow( index, e )
+									}}>Edit
+									</a>
+									<span className={'action-divider'}> | </span>
+									<a href="#" onClick={e => {
+										rowDelete( index, e )
+									}}>Delete
+									</a>
+								</td>
+							</tr>
+						} )}
+					</tbody>
+				</table>
+
+				:
+
+				<div className={'nodata-jumbotron'}>
+					<h3> There is no available flows to show </h3>
+				</div>
+
+			}
 
 			<TableAction />
 		</>
