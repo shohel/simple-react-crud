@@ -26,7 +26,6 @@ const reducer = (state, action) => {
 					return !flow.is_checked;
 				} );
 			}
-
 			return state;
 		case 'delete_row':
 			return [...state.slice( 0, action.playload.flow_index ), ...state.slice( action.playload.flow_index + 1 )];
