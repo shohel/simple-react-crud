@@ -28,6 +28,8 @@ const reducer = (state, action) => {
 			}
 
 			return state;
+		case 'delete_row':
+			return [...state.slice( 0, action.playload.flow_index ), ...state.slice( action.playload.flow_index + 1 )];
 		default:
 			return state;
 	}

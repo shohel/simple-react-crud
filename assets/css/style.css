@@ -239,6 +239,10 @@ th {
   margin: 50px;
 }
 
+#page-main a {
+  color: #276FB0;
+  text-decoration: none;
+}
 #page-main button, #page-main select {
   background-color: #F5F6F8;
   border: 1px solid #DFDFDF;

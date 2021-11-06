@@ -13,6 +13,11 @@ const Table = () => {
 		flowDispatch( { type: 'toggle_all', checked : e.target.checked } );
 	}
 
+	const rowDelete = ( flow_index, e ) => {
+		e.preventDefault();
+		flowDispatch( { type: 'delete_row', playload : { flow_index : flow_index } } );
+	}
+
 	return (
 		<>
 			<TableAction />
@@ -28,12 +33,15 @@ const Table = () => {
 				</thead>
 
 				<tbody>
-					{flowState.map( (flow) => {
+					{flowState.map( (flow, index) => {
 						return <tr key={flow.id}>
 							<td> <input type="checkbox" checked={flow.is_checked} onChange={ e => { toggleSelect( flow.id ) } } /> </td>
 							<td> { flow.name } </td>
 							<td className={'status-col'}> <p>{flow.status} <br /> {flow.date} </p> </td>
-							<td> <strong> # </strong> </td>
+							<td>
+								<a href="#"> Edit </a> |
+								<a href="#" onClick={ e => { rowDelete( index, e ) } }> Delete </a>
+							</td>
 						</tr>
 					})}
 				</tbody>
