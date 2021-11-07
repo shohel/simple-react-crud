@@ -22,10 +22,21 @@ function Header() {
 		flowDispatch( { type : 'add_new_flow', playload : { newFlow : newFlow } } );
 	}
 
+	const handleExport = e => {
+		e.preventDefault();
+
+		let a = document.createElement("a");
+		let file = new Blob( [JSON.stringify( flowState )], {type: 'text/plain'});
+		a.href = URL.createObjectURL(file);
+		a.download = 'flows.json.txt';
+		a.click();
+	}
+
 	const element = (
 		<div className={'list-header'}>
 			<h2>Flows</h2>
 			<button type="button" className={'button-primary'} onClick={ addNewFlow } > Add New</button>
+			<button type="button" onClick={ handleExport } > Export All ({flowState.length}) </button>
 		</div>
 	);
 
