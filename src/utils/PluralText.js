@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const makeTextPlural = ( count, singular, plural, showCount ) => {
 	let output = singular
 	if (count !== 1) {
@@ -22,3 +21,4 @@ const PluralText = ( props ) => {
 }
 
 export default PluralText;
+export {makeTextPlural};

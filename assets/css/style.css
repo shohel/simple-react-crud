@@ -339,5 +339,25 @@ th {
   padding: 20px;
   text-align: center;
 }
+#page-main .pagination {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#page-main .pagination .pagination-info {
+  color: #686f89;
+}
+#page-main .pagination button {
+  margin-left: -1px;
+  border-radius: 0;
+  padding: 7px 12px;
+  color: #565b77;
+}
+#page-main .pagination button.active {
+  background-color: #565b77;
+  border: 1px solid #565b77;
+  color: #ffffff;
+}
 
 /*# sourceMappingURL=style.css.map */
