@@ -47,9 +47,12 @@ const Table = () => {
 		flowDispatch( {type: 'delete_row', playload: {flow_index: flow_index}} );
 	}
 
-	const editRow = ( flow_index, e ) => {
+	const editRow = ( flowID, e ) => {
 		e.preventDefault();
 
+		let flow_index = flowState.findIndex( flow => {
+			return flow.id === flowID;
+		} );
 		let oldFlowName = flowState[flow_index].name;
 		let flowName = prompt( "Enter the flow name", oldFlowName );
 
@@ -100,15 +103,9 @@ const Table = () => {
 										</p>
 									</td>
 									<td>
-										<a href="#" onClick={e => {
-											editRow( index, e )
-										}}>Edit
-										</a>
+										<a href="#" onClick={e => { editRow( flow.id, e ) }}> Edit </a>
 										<span className={'action-divider'}>|</span>
-										<a href="#" onClick={e => {
-											rowDelete( index, e )
-										}}>Delete
-										</a>
+										<a href="#" onClick={e => { rowDelete( index, e ) }}> Delete </a>
 									</td>
 								</tr>
 							} )}

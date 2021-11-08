@@ -50,6 +50,17 @@ const reducer = (state, action) => {
 
 			return defaultFlows;
 
+		case 'upload_json' :
+
+			let uploaded_json_data = action.playload.json_data;
+
+			if ( uploaded_json_data.length ) {
+				alert( 'Json data has been imported successfully.' );
+				return uploaded_json_data;
+			}
+
+			return state;
+
 		default:
 			return state;
 	}
