@@ -4,5 +4,5 @@ import AppWrap from './App';
 
 ReactDOM.render(
 	<AppWrap />,
-	document.getElementById('root')
+	document.getElementById('rdlist_js_placeholder')
 );

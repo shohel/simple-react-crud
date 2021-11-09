@@ -8,8 +8,11 @@ module.exports = {
 		poll: 1000,
 		ignored: /node_modules/,
 	},
-	mode: env_mode,
+	mode: 'production',
 	entry: './src/Index.js',
+	optimization: {
+		minimize: false
+	},
 	output: {
 		path: path.resolve(__dirname, 'assets/js'),
 		filename: 'main.js',

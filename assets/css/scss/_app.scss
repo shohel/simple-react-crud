@@ -1,4 +1,86 @@
-#page-main{
+#rdlist_wrapper{
+  background-color: #ffffff;
+  max-width: 1168px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+
+  p{
+    margin: 0;
+  }
+
+  .flows-filter-wrap{
+    display: flex;
+    align-items: center;
+
+    .flows-active-text-wrap{
+      flex: 1;
+    }
+  }
+
+  .table-action-wrap {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+    .action-dropdown-wrap {
+      display: flex;
+      column-gap: 10px;
+      flex: 1;
+    }
+  }
+
+  .list-header{
+    display: flex;
+    margin: 0;
+    margin-bottom: 20px;
+    align-items: center;
+
+    h2{
+      margin: 0;
+    }
+
+    button{
+      margin-left: 10px;
+    }
+  }
+
+  table{
+    width: 100%;
+    text-align: left;
+    border: 1px solid #DFDFDF;
+
+    thead{
+      background-color: #F5F6F8;
+    }
+
+    tr{
+      border-top: 1px solid #DFDFDF;
+
+      th{
+        padding: 10px 15px;
+        border: 1px solid #DFDFDF;
+      }
+      th:last-child, td:last-child{
+        text-align: right;
+      }
+
+      td{
+        padding: 10px 15px;
+        border: 1px solid #DFDFDF;
+
+        &.status-col{
+          color: #62727e;
+          font-size: 0.8em;
+        }
+
+        .action-divider{
+          padding: 0 5px;
+          color: #384556;
+        }
+      }
+    }
+  }
+
   a{
     color: #276FB0;
     text-decoration: none;
@@ -33,86 +115,6 @@
     button{
       margin-left: -1px;
     }
-  }
-
-  .app-wrap{
-    padding: 20px;
-    border: 1px solid #dddddd;
-    p{
-      margin: 0;
-    }
-
-    .flows-filter-wrap{
-      display: flex;
-      align-items: center;
-
-      .flows-active-text-wrap{
-        flex: 1;
-      }
-    }
-
-    .table-action-wrap {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-
-      .action-dropdown-wrap {
-        display: flex;
-        column-gap: 10px;
-        flex: 1;
-      }
-    }
-
-    .list-header{
-      display: flex;
-      margin: 0;
-      margin-bottom: 20px;
-      align-items: center;
-
-      h2{
-        margin: 0;
-      }
-
-      button{
-        margin-left: 10px;
-      }
-    }
-
-    table{
-      width: 100%;
-      text-align: left;
-      border: 1px solid #DFDFDF;
-
-      thead{
-        background-color: #F5F6F8;
-      }
-
-      tr{
-        border-top: 1px solid #DFDFDF;
-
-        th{
-          padding: 10px 15px;
-        }
-        th:last-child, td:last-child{
-          text-align: right;
-        }
-
-        td{
-          padding: 10px 15px;
-
-          &.status-col{
-            color: #62727e;
-            font-size: 0.8em;
-          }
-
-          .action-divider{
-            padding: 0 5px;
-            color: #384556;
-          }
-        }
-      }
-    }
-
   }
 
   .nodata-jumbotron{
