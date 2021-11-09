@@ -24,18 +24,6 @@
   column-gap: 10px;
   flex: 1;
 }
-#rdlist_wrapper .list-header {
-  display: flex;
-  margin: 0;
-  margin-bottom: 20px;
-  align-items: center;
-}
-#rdlist_wrapper .list-header h2 {
-  margin: 0;
-}
-#rdlist_wrapper .list-header button {
-  margin-left: 10px;
-}
 #rdlist_wrapper table {
   width: 100%;
   text-align: left;

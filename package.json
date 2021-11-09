@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-checktextdomain": "^1.0.1",
     "grunt-contrib-clean": "~1.1.0",
@@ -34,7 +35,10 @@
     "grunt-wp-i18n": "^1.0.3",
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^6.0.1",
-    "webpack": "^5.61.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.62.2",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
   }

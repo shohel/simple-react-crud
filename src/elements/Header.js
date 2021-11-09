@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Header.module.scss';
 import { useFlowContext } from '../FlowContext';
 
 function Header() {
@@ -54,7 +55,7 @@ function Header() {
 	}
 
 	const element = (
-		<div className={'list-header'}>
+		<div className={ styles.list_header }>
 			<h2>Flows</h2>
 			<button type="button" className={'button-primary'} onClick={ addNewFlow } > Add New</button>
 			<button type="button" onClick={ importHandler } > Import </button>
