@@ -1,0 +1,25 @@
+
+.filter-wrap{
+  display: flex;
+  align-items: center;
+
+  .active-text-wrap{
+    flex: 1;
+  }
+}
+
+.input-group{
+  display: flex;
+  align-items: stretch;
+
+  input, button{
+    border: 1px solid #DFDFDF;
+    line-height: 40px;
+    padding: 0 10px;
+    border-radius: 0;
+  }
+
+  button{
+    margin-left: -1px;
+  }
+}

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useFlowContext} from '../FlowContext';
+import styles from './TableFilter.module.scss';
 
 const TableFilter = () => {
 	const [timerID, setTimerID] = useState( '' );
@@ -14,14 +15,14 @@ const TableFilter = () => {
 	}
 
 	return (
-		<div className={'flows-filter-wrap'}>
+		<div className={ styles.filterWrap }>
 
-			<div className={'flows-active-text-wrap'}>
+			<div className={ styles.activeTextWrap }>
 				<p>Active ({flowState.length})</p>
 			</div>
 
 			<div className={'search-form-wrap'}>
-				<div className={'search-input-group'}>
+				<div className={ styles.inputGroup }>
 					<input type="text" placeholder="Search flows" onKeyUp={e => inputSearchHandler( e )}/>
 					<button type="search-button">🔍</button>
 				</div>

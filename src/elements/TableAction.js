@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useFlowContext} from '../FlowContext';
 import PluralText from '../utils/PluralText';
+import styles from './TableAction.module.scss';
 
 
 const TableAction = () => {
@@ -20,8 +21,8 @@ const TableAction = () => {
 	}
 
 	return (
-		<div className={'table-action-wrap'}>
-			<div className={'action-dropdown-wrap'}>
+		<div className={ styles.tableActionWrap }>
+			<div className={ styles.actionDropdownWrap }>
 
 				<select value={action} onChange={ e => { onChangeActionHandler( e ) } } >
 					<option value="" >Bulk Action</option>

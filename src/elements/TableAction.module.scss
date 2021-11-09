@@ -1,0 +1,11 @@
+.table-action-wrap {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+  .action-dropdown-wrap {
+    display: flex;
+    column-gap: 10px;
+    flex: 1;
+  }
+}

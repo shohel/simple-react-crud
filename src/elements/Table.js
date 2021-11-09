@@ -3,6 +3,8 @@ import {useFlowContext} from '../FlowContext';
 import TableFilter from './TableFilter'
 import TableAction from './TableAction';
 import {makeTextPlural} from '../utils/PluralText';
+import styles from './Table.module.scss';
+
 
 const Table = () => {
 	const {flowState, flowDispatch} = useFlowContext();
@@ -71,7 +73,7 @@ const Table = () => {
 			{flowState.length ?
 
 				<>
-					<table>
+					<table className={styles.table}>
 						<thead>
 							<tr>
 								<th>

@@ -20,7 +20,95 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, ".list_header-nYu2P{display:flex;margin:0;margin-bottom:20px;align-items:center}.list_header-nYu2P h2{margin:0}.list_header-nYu2P button{margin-left:10px}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"list_header": "list_header-nYu2P"
+	"list_header": "list_header-nYu2P",
+	"listHeader": "list_header-nYu2P"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 452:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(645);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".table-sftw7{width:100%;text-align:left;border:1px solid #dfdfdf}.table-sftw7 thead{background-color:#f5f6f8}.table-sftw7 tr{border-top:1px solid #dfdfdf}.table-sftw7 tr th{padding:10px 15px;border:1px solid #dfdfdf;text-align:left}.table-sftw7 tr th:last-child,.table-sftw7 tr td:last-child{text-align:right}.table-sftw7 tr td{padding:10px 15px;border:1px solid #dfdfdf}.table-sftw7 tr td.status-col-i8RcF{color:#62727e;font-size:.8em}.table-sftw7 tr td .action-divider-rCO1D{padding:0 5px;color:#384556}", ""]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"table": "table-sftw7",
+	"status-col": "status-col-i8RcF",
+	"statusCol": "status-col-i8RcF",
+	"action-divider": "action-divider-rCO1D",
+	"actionDivider": "action-divider-rCO1D"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 504:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(645);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".table-action-wrap-_bXtJ{display:flex;align-items:center;margin:10px 0}.table-action-wrap-_bXtJ .action-dropdown-wrap-bwmKw{display:flex;column-gap:10px;flex:1}", ""]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"table-action-wrap": "table-action-wrap-_bXtJ",
+	"tableActionWrap": "table-action-wrap-_bXtJ",
+	"action-dropdown-wrap": "action-dropdown-wrap-bwmKw",
+	"actionDropdownWrap": "action-dropdown-wrap-bwmKw"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 281:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(645);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".filter-wrap-w85s2{display:flex;align-items:center}.filter-wrap-w85s2 .active-text-wrap-WtAlI{flex:1}.input-group-u9sKL{display:flex;align-items:stretch}.input-group-u9sKL input,.input-group-u9sKL button{border:1px solid #dfdfdf;line-height:40px;padding:0 10px;border-radius:0}.input-group-u9sKL button{margin-left:-1px}", ""]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"filter-wrap": "filter-wrap-w85s2",
+	"filterWrap": "filter-wrap-w85s2",
+	"active-text-wrap": "active-text-wrap-WtAlI",
+	"activeTextWrap": "active-text-wrap-WtAlI",
+	"input-group": "input-group-u9sKL",
+	"inputGroup": "input-group-u9sKL"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -257,7 +345,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(294),m=__webpack_require__(418),r=__webpack_require__(840);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
+var aa=__webpack_require__(976),m=__webpack_require__(418),r=__webpack_require__(840);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
 function ea(a,b){ca[a]=b;for(a=0;a<b.length;a++)ba.add(b[a])}
 var fa=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ha=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,ia=Object.prototype.hasOwnProperty,
 ja={},ka={};function la(a){if(ia.call(ka,a))return!0;if(ia.call(ja,a))return!1;if(ha.test(a))return ka[a]=!0;ja[a]=!0;return!1}function ma(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
@@ -611,7 +699,7 @@ exports.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};exports.u
 
 /***/ }),
 
-/***/ 294:
+/***/ 976:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
@@ -1012,7 +1100,7 @@ var __webpack_exports__ = {};
 (() => {
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(294);
+var react = __webpack_require__(976);
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
 var react_dom = __webpack_require__(935);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
@@ -1153,6 +1241,37 @@ function Header() {
 }
 
 /* harmony default export */ const elements_Header = (Header);
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/elements/TableFilter.module.scss
+var TableFilter_module = __webpack_require__(281);
+;// CONCATENATED MODULE: ./src/elements/TableFilter.module.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var TableFilter_module_options = {};
+
+TableFilter_module_options.styleTagTransform = (styleTagTransform_default());
+TableFilter_module_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      TableFilter_module_options.insert = insertBySelector_default().bind(null, "head");
+    
+TableFilter_module_options.domAPI = (styleDomAPI_default());
+TableFilter_module_options.insertStyleElement = (insertStyleElement_default());
+
+var TableFilter_module_update = injectStylesIntoStyleTag_default()(TableFilter_module/* default */.Z, TableFilter_module_options);
+
+
+
+
+       /* harmony default export */ const elements_TableFilter_module = (TableFilter_module/* default */.Z && TableFilter_module/* default.locals */.Z.locals ? TableFilter_module/* default.locals */.Z.locals : undefined);
+
 ;// CONCATENATED MODULE: ./src/elements/TableFilter.js
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -1165,6 +1284,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1192,13 +1312,13 @@ var TableFilter = function TableFilter() {
   };
 
   return /*#__PURE__*/react.createElement("div", {
-    className: 'flows-filter-wrap'
+    className: elements_TableFilter_module.filterWrap
   }, /*#__PURE__*/react.createElement("div", {
-    className: 'flows-active-text-wrap'
+    className: elements_TableFilter_module.activeTextWrap
   }, /*#__PURE__*/react.createElement("p", null, "Active (", flowState.length, ")")), /*#__PURE__*/react.createElement("div", {
     className: 'search-form-wrap'
   }, /*#__PURE__*/react.createElement("div", {
-    className: 'search-input-group'
+    className: elements_TableFilter_module.inputGroup
   }, /*#__PURE__*/react.createElement("input", {
     type: "text",
     placeholder: "Search flows",
@@ -1236,6 +1356,37 @@ var PluralText = function PluralText(props) {
 
 /* harmony default export */ const utils_PluralText = (PluralText);
 
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/elements/TableAction.module.scss
+var TableAction_module = __webpack_require__(504);
+;// CONCATENATED MODULE: ./src/elements/TableAction.module.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var TableAction_module_options = {};
+
+TableAction_module_options.styleTagTransform = (styleTagTransform_default());
+TableAction_module_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      TableAction_module_options.insert = insertBySelector_default().bind(null, "head");
+    
+TableAction_module_options.domAPI = (styleDomAPI_default());
+TableAction_module_options.insertStyleElement = (insertStyleElement_default());
+
+var TableAction_module_update = injectStylesIntoStyleTag_default()(TableAction_module/* default */.Z, TableAction_module_options);
+
+
+
+
+       /* harmony default export */ const elements_TableAction_module = (TableAction_module/* default */.Z && TableAction_module/* default.locals */.Z.locals ? TableAction_module/* default.locals */.Z.locals : undefined);
+
 ;// CONCATENATED MODULE: ./src/elements/TableAction.js
 function TableAction_slicedToArray(arr, i) { return TableAction_arrayWithHoles(arr) || TableAction_iterableToArrayLimit(arr, i) || TableAction_unsupportedIterableToArray(arr, i) || TableAction_nonIterableRest(); }
 
@@ -1248,6 +1399,7 @@ function TableAction_arrayLikeToArray(arr, len) { if (len == null || len > arr.l
 function TableAction_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function TableAction_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1278,9 +1430,9 @@ var TableAction = function TableAction() {
   };
 
   return /*#__PURE__*/react.createElement("div", {
-    className: 'table-action-wrap'
+    className: elements_TableAction_module.tableActionWrap
   }, /*#__PURE__*/react.createElement("div", {
-    className: 'action-dropdown-wrap'
+    className: elements_TableAction_module.actionDropdownWrap
   }, /*#__PURE__*/react.createElement("select", {
     value: action,
     onChange: function onChange(e) {
@@ -1305,6 +1457,37 @@ var TableAction = function TableAction() {
 };
 
 /* harmony default export */ const elements_TableAction = (TableAction);
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/elements/Table.module.scss
+var Table_module = __webpack_require__(452);
+;// CONCATENATED MODULE: ./src/elements/Table.module.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var Table_module_options = {};
+
+Table_module_options.styleTagTransform = (styleTagTransform_default());
+Table_module_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      Table_module_options.insert = insertBySelector_default().bind(null, "head");
+    
+Table_module_options.domAPI = (styleDomAPI_default());
+Table_module_options.insertStyleElement = (insertStyleElement_default());
+
+var Table_module_update = injectStylesIntoStyleTag_default()(Table_module/* default */.Z, Table_module_options);
+
+
+
+
+       /* harmony default export */ const elements_Table_module = (Table_module/* default */.Z && Table_module/* default.locals */.Z.locals ? Table_module/* default.locals */.Z.locals : undefined);
+
 ;// CONCATENATED MODULE: ./src/elements/Table.js
 function Table_slicedToArray(arr, i) { return Table_arrayWithHoles(arr) || Table_iterableToArrayLimit(arr, i) || Table_unsupportedIterableToArray(arr, i) || Table_nonIterableRest(); }
 
@@ -1317,6 +1500,7 @@ function Table_arrayLikeToArray(arr, len) { if (len == null || len > arr.length)
 function Table_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function Table_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1409,7 +1593,9 @@ var Table = function Table() {
     });
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_TableFilter, null), /*#__PURE__*/react.createElement(elements_TableAction, null), flowState.length ? /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("table", null, /*#__PURE__*/react.createElement("thead", null, /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("th", null, /*#__PURE__*/react.createElement("input", {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_TableFilter, null), /*#__PURE__*/react.createElement(elements_TableAction, null), flowState.length ? /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("table", {
+    className: elements_Table_module.table
+  }, /*#__PURE__*/react.createElement("thead", null, /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("th", null, /*#__PURE__*/react.createElement("input", {
     type: "checkbox",
     onChange: function onChange(e) {
       toggleSelectAll(e);
@@ -1711,7 +1897,7 @@ function AppWrap() {
       flowState: flowState,
       flowDispatch: flowDispatch
     }
-  }, /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(elements_Header, null), /*#__PURE__*/react.createElement(elements_Table, null)));
+  }, /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_Header, null), /*#__PURE__*/react.createElement(elements_Table, null)));
   return template;
 }
 

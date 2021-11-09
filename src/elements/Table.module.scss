@@ -1,0 +1,37 @@
+.table{
+  width: 100%;
+  text-align: left;
+  border: 1px solid #DFDFDF;
+
+  thead{
+    background-color: #F5F6F8;
+  }
+
+  tr{
+    border-top: 1px solid #DFDFDF;
+
+    th{
+      padding: 10px 15px;
+      border: 1px solid #DFDFDF;
+      text-align: left;
+    }
+    th:last-child, td:last-child{
+      text-align: right;
+    }
+
+    td{
+      padding: 10px 15px;
+      border: 1px solid #DFDFDF;
+
+      &.status-col{
+        color: #62727e;
+        font-size: 0.8em;
+      }
+
+      .action-divider{
+        padding: 0 5px;
+        color: #384556;
+      }
+    }
+  }
+}

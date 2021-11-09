@@ -10,10 +10,10 @@ function AppWrap(){
 
 	const template = (
 		<FlowContext.Provider value={ {flowState, flowDispatch} }>
-			<div>
+			<>
 				<Header />
 				<Table />
-			</div>
+			</>
 		</FlowContext.Provider>
 	);
 
