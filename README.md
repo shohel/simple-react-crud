@@ -3,18 +3,27 @@ A simple react crud application based on functional components
 
 ## Installations
 
+### Composer
+
+The vendor directory does not exist by default. Please follow the below procedure in case if you install this plugin from the repository
+
+* Clone this repository and unzip it
+* Run the command ```composer install``` 
+* Go to plugins from WordPress dashboard and activate the plugin
+
+### NPM
+
 Run the following commands after cloning and change the terminal directory to this cloned directory.
 
-> `npm install`
+* `npm install`
+* Compile react with webpack and watch changes
+* `npm run watch`
+* Run the grunt task to compile SCSS to CSS
+* `grunt watch`
 
-## Compile react with webpack and watch
+### Production Build
 
-> `npm run watch`
+After running the following commands from the terminal, you will get an installable WordPress plugin as a zip file in the root directory.
 
-## Production Build
-
-> `npm run build`
-
-## Live Preview
-
-[https://shohel.github.io/simple-react-crud/](https://shohel.github.io/simple-react-crud/)
+* `npm run build`
+* `grunt build`
