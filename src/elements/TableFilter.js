@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {useFlowContext} from '../FlowContext';
+import {useListContext} from '../ListContext';
 import styles from './TableFilter.module.scss';
 
 const TableFilter = () => {
 	const [timerID, setTimerID] = useState( '' );
-	const {flowState, flowDispatch} = useFlowContext();
+	const {listState, listDispatch} = useListContext();
 
 	const inputSearchHandler = e => {
 		clearTimeout( timerID );
 
 		setTimerID( setTimeout( () => {
-			flowDispatch( {type: 'search_flows', playload: {search_term: e.target.value}} );
+			listDispatch( {type: 'search', playload: {search_term: e.target.value}} );
 		}, 500 ) );
 	}
 
@@ -18,12 +18,12 @@ const TableFilter = () => {
 		<div className={ styles.filterWrap }>
 
 			<div className={ styles.activeTextWrap }>
-				<p>Active ({flowState.length})</p>
+				<p>Active ({listState.length})</p>
 			</div>
 
 			<div className={'search-form-wrap'}>
 				<div className={ styles.inputGroup }>
-					<input type="text" placeholder="Search flows" onKeyUp={e => inputSearchHandler( e )}/>
+					<input type="text" placeholder="Search..." onKeyUp={e => inputSearchHandler( e )}/>
 					<button type="search-button">🔍</button>
 				</div>
 			</div>

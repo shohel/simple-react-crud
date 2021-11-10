@@ -1,54 +1,54 @@
 
-import defaultFlows from './Data';
+import defaultLists from './Data';
 
 const reducer = (state, action) => {
 	switch ( action.type ) {
 		case 'toggle_select':
 			let input_id = action.playload.select_id;
 
-			return state.map( flow => {
-				if ( input_id === flow.id ) {
-					return {...flow, is_checked: !flow.is_checked}
+			return state.map( list => {
+				if ( input_id === list.id ) {
+					return {...list, is_checked: !list.is_checked}
 				}
-				return flow;
+				return list;
 			} );
 
 		case 'toggle_all':
-			return state.map( flow => {
-				return {...flow, is_checked: action.checked}
+			return state.map( list => {
+				return {...list, is_checked: action.checked}
 			} );
-		case 'add_new_flow':
+		case 'add_new_list':
 
-			return [...state, ...[action.playload.newFlow]];
+			return [...state, ...[action.playload.newList]];
 
 		case 'bulk_action':
 
 			if ( 'delete' === action.playload ) {
-				return state.filter( flow => {
-					return !flow.is_checked;
+				return state.filter( list => {
+					return !list.is_checked;
 				} );
 			}
 			return state;
 		case 'delete_row':
-			return [...state.slice( 0, action.playload.flow_index ), ...state.slice( action.playload.flow_index + 1 )];
-		case 'update_flow_name':
-			let flow_index = action.playload.flow_index;
-			let flow_name = action.playload.new_name;
+			return [...state.slice( 0, action.playload.list_index ), ...state.slice( action.playload.list_index + 1 )];
+		case 'update_list_name':
+			let list_index = action.playload.list_index;
+			let list_name = action.playload.new_name;
 
 			let new_state = [...state];
-			new_state[flow_index] = {...new_state[flow_index], name: flow_name}
+			new_state[list_index] = {...new_state[list_index], name: list_name}
 			return new_state;
 
-		case 'search_flows' :
+		case 'search' :
 			let search_term = action.playload.search_term.toLowerCase();
 
 			if ( search_term.length ) {
-				return defaultFlows.filter( flow => {
-					return flow.name.toLowerCase().includes( search_term );
+				return defaultLists.filter( list => {
+					return list.name.toLowerCase().includes( search_term );
 				} );
 			}
 
-			return defaultFlows;
+			return defaultLists;
 
 		case 'upload_json' :
 

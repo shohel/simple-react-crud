@@ -100,7 +100,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".filter-wrap-w85s2{display:flex;align-items:center}.filter-wrap-w85s2 .active-text-wrap-WtAlI{flex:1}.input-group-u9sKL{display:flex;align-items:stretch}.input-group-u9sKL input,.input-group-u9sKL button{border:1px solid #dfdfdf;line-height:40px;padding:0 10px;border-radius:0}.input-group-u9sKL button{margin-left:-1px}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".filter-wrap-w85s2{display:flex;align-items:center}.filter-wrap-w85s2 .active-text-wrap-WtAlI{flex:1}.input-group-u9sKL{display:flex;align-items:stretch}.input-group-u9sKL input,.input-group-u9sKL button{border:1px solid #dfdfdf;line-height:40px;padding:0 10px;border-radius:0;margin:0}.input-group-u9sKL button{margin-left:-1px}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"filter-wrap": "filter-wrap-w85s2",
@@ -1152,41 +1152,41 @@ var update = injectStylesIntoStyleTag_default()(Header_module/* default */.Z, op
 
        /* harmony default export */ const elements_Header_module = (Header_module/* default */.Z && Header_module/* default.locals */.Z.locals ? Header_module/* default.locals */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/FlowContext.js
+;// CONCATENATED MODULE: ./src/ListContext.js
 
-var FlowContext = /*#__PURE__*/(0,react.createContext)({});
-function useFlowContext() {
-  return (0,react.useContext)(FlowContext);
+var ListContext = /*#__PURE__*/(0,react.createContext)({});
+function useListContext() {
+  return (0,react.useContext)(ListContext);
 }
-/* harmony default export */ const src_FlowContext = (FlowContext);
+/* harmony default export */ const src_ListContext = (ListContext);
 ;// CONCATENATED MODULE: ./src/elements/Header.js
 
 
 
 
 function Header() {
-  var _useFlowContext = useFlowContext(),
-      flowState = _useFlowContext.flowState,
-      flowDispatch = _useFlowContext.flowDispatch;
+  var _useListContext = useListContext(),
+      listState = _useListContext.listState,
+      listDispatch = _useListContext.listDispatch;
 
-  var addNewFlow = function addNewFlow() {
-    var flowName = prompt("Enter the flow name");
+  var addNewList = function addNewList() {
+    var listName = prompt("Enter the list name");
 
-    if (!flowName || !flowName.length) {
+    if (!listName || !listName.length) {
       return;
     }
 
-    var newFlow = {
+    var newList = {
       id: Date.now().toString(),
       is_checked: false,
-      name: flowName,
+      name: listName,
       status: 'Published',
       date: new Date().toJSON().slice(0, 19).replace('T', ' ')
     };
-    flowDispatch({
-      type: 'add_new_flow',
+    listDispatch({
+      type: 'add_new_list',
       playload: {
-        newFlow: newFlow
+        newList: newList
       }
     });
   };
@@ -1200,7 +1200,7 @@ function Header() {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        flowDispatch({
+        listDispatch({
           type: 'upload_json',
           playload: {
             json_data: JSON.parse(e.target.result)
@@ -1216,27 +1216,27 @@ function Header() {
   var handleExport = function handleExport(e) {
     e.preventDefault();
     var a = document.createElement("a");
-    var file = new Blob([JSON.stringify(flowState)], {
+    var file = new Blob([JSON.stringify(listState)], {
       type: 'text/plain'
     });
     a.href = URL.createObjectURL(file);
-    a.download = 'flows.json';
+    a.download = 'lists.json';
     a.click();
   };
 
   var element = /*#__PURE__*/react.createElement("div", {
     className: elements_Header_module.list_header
-  }, /*#__PURE__*/react.createElement("h2", null, "Flows"), /*#__PURE__*/react.createElement("button", {
+  }, /*#__PURE__*/react.createElement("h2", null, "Lists"), /*#__PURE__*/react.createElement("button", {
     type: "button",
     className: 'button-primary',
-    onClick: addNewFlow
+    onClick: addNewList
   }, " Add New"), /*#__PURE__*/react.createElement("button", {
     type: "button",
     onClick: importHandler
   }, " Import "), /*#__PURE__*/react.createElement("button", {
     type: "button",
     onClick: handleExport
-  }, " Export All (", flowState.length, ") "));
+  }, " Export All (", listState.length, ") "));
   return element;
 }
 
@@ -1295,15 +1295,15 @@ var TableFilter = function TableFilter() {
       timerID = _useState2[0],
       setTimerID = _useState2[1];
 
-  var _useFlowContext = useFlowContext(),
-      flowState = _useFlowContext.flowState,
-      flowDispatch = _useFlowContext.flowDispatch;
+  var _useListContext = useListContext(),
+      listState = _useListContext.listState,
+      listDispatch = _useListContext.listDispatch;
 
   var inputSearchHandler = function inputSearchHandler(e) {
     clearTimeout(timerID);
     setTimerID(setTimeout(function () {
-      flowDispatch({
-        type: 'search_flows',
+      listDispatch({
+        type: 'search',
         playload: {
           search_term: e.target.value
         }
@@ -1315,13 +1315,13 @@ var TableFilter = function TableFilter() {
     className: elements_TableFilter_module.filterWrap
   }, /*#__PURE__*/react.createElement("div", {
     className: elements_TableFilter_module.activeTextWrap
-  }, /*#__PURE__*/react.createElement("p", null, "Active (", flowState.length, ")")), /*#__PURE__*/react.createElement("div", {
+  }, /*#__PURE__*/react.createElement("p", null, "Active (", listState.length, ")")), /*#__PURE__*/react.createElement("div", {
     className: 'search-form-wrap'
   }, /*#__PURE__*/react.createElement("div", {
     className: elements_TableFilter_module.inputGroup
   }, /*#__PURE__*/react.createElement("input", {
     type: "text",
-    placeholder: "Search flows",
+    placeholder: "Search...",
     onKeyUp: function onKeyUp(e) {
       return inputSearchHandler(e);
     }
@@ -1406,9 +1406,9 @@ function TableAction_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var TableAction = function TableAction() {
-  var _useFlowContext = useFlowContext(),
-      flowState = _useFlowContext.flowState,
-      flowDispatch = _useFlowContext.flowDispatch;
+  var _useListContext = useListContext(),
+      listState = _useListContext.listState,
+      listDispatch = _useListContext.listDispatch;
 
   var _useState = (0,react.useState)(''),
       _useState2 = TableAction_slicedToArray(_useState, 2),
@@ -1422,7 +1422,7 @@ var TableAction = function TableAction() {
 
   var onApplyAction = function onApplyAction(e) {
     e.preventDefault();
-    flowDispatch({
+    listDispatch({
       type: 'bulk_action',
       playload: action
     });
@@ -1447,9 +1447,9 @@ var TableAction = function TableAction() {
       onApplyAction(e);
     }
   }, " Apply ")), /*#__PURE__*/react.createElement("div", {
-    className: 'action-flows-count'
+    className: 'action-lists-count'
   }, /*#__PURE__*/react.createElement(utils_PluralText, {
-    count: flowState.length,
+    count: listState.length,
     singular: 'Item',
     plural: 'Items',
     show_count: true
@@ -1509,21 +1509,21 @@ function Table_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Table = function Table() {
-  var _useFlowContext = useFlowContext(),
-      flowState = _useFlowContext.flowState,
-      flowDispatch = _useFlowContext.flowDispatch;
+  var _useListContext = useListContext(),
+      listState = _useListContext.listState,
+      listDispatch = _useListContext.listDispatch;
 
   var perPage = 5;
-  var totalPages = Math.ceil(flowState.length / perPage);
+  var totalPages = Math.ceil(listState.length / perPage);
 
   var _useState = (0,react.useState)(1),
       _useState2 = Table_slicedToArray(_useState, 2),
       currentPage = _useState2[0],
       setCurrentPage = _useState2[1];
 
-  var indexOfLastFlow = currentPage * perPage;
-  var indexOfFirstFlow = indexOfLastFlow - perPage;
-  var currentFlows = flowState.slice(indexOfFirstFlow, indexOfLastFlow);
+  var indexOfLastList = currentPage * perPage;
+  var indexOfFirstList = indexOfLastList - perPage;
+  var currentLists = listState.slice(indexOfFirstList, indexOfLastList);
   var pageNumbers = [];
 
   for (var page_i = 1; page_i <= totalPages; page_i++) {
@@ -1546,75 +1546,75 @@ var Table = function Table() {
     return;
   };
 
-  var toggleSelect = function toggleSelect(flow_id) {
-    flowDispatch({
+  var toggleSelect = function toggleSelect(list_id) {
+    listDispatch({
       type: 'toggle_select',
       playload: {
-        select_id: flow_id
+        select_id: list_id
       }
     });
   };
 
   var toggleSelectAll = function toggleSelectAll(e) {
-    flowDispatch({
+    listDispatch({
       type: 'toggle_all',
       checked: e.target.checked
     });
   };
 
-  var rowDelete = function rowDelete(flow_index, e) {
+  var rowDelete = function rowDelete(list_index, e) {
     e.preventDefault();
-    flowDispatch({
+    listDispatch({
       type: 'delete_row',
       playload: {
-        flow_index: flow_index
+        list_index: list_index
       }
     });
   };
 
-  var editRow = function editRow(flowID, e) {
+  var editRow = function editRow(listID, e) {
     e.preventDefault();
-    var flow_index = flowState.findIndex(function (flow) {
-      return flow.id === flowID;
+    var list_index = listState.findIndex(function (list) {
+      return list.id === listID;
     });
-    var oldFlowName = flowState[flow_index].name;
-    var flowName = prompt("Enter the flow name", oldFlowName);
+    var oldListName = listState[list_index].name;
+    var listName = prompt("Enter the list name", oldListName);
 
-    if (!flowName || !flowName.length) {
+    if (!listName || !listName.length) {
       return;
     }
 
-    flowDispatch({
-      type: 'update_flow_name',
+    listDispatch({
+      type: 'update_list_name',
       playload: {
-        flow_index: flow_index,
-        new_name: flowName
+        list_index: list_index,
+        new_name: listName
       }
     });
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_TableFilter, null), /*#__PURE__*/react.createElement(elements_TableAction, null), flowState.length ? /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("table", {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_TableFilter, null), /*#__PURE__*/react.createElement(elements_TableAction, null), listState.length ? /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("table", {
     className: elements_Table_module.table
   }, /*#__PURE__*/react.createElement("thead", null, /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("th", null, /*#__PURE__*/react.createElement("input", {
     type: "checkbox",
     onChange: function onChange(e) {
       toggleSelectAll(e);
     }
-  })), /*#__PURE__*/react.createElement("th", null, "Name"), /*#__PURE__*/react.createElement("th", null, "Status"), /*#__PURE__*/react.createElement("th", null, /*#__PURE__*/react.createElement("strong", null, "Actions")))), /*#__PURE__*/react.createElement("tbody", null, currentFlows.map(function (flow, index) {
+  })), /*#__PURE__*/react.createElement("th", null, "Name"), /*#__PURE__*/react.createElement("th", null, "Status"), /*#__PURE__*/react.createElement("th", null, /*#__PURE__*/react.createElement("strong", null, "Actions")))), /*#__PURE__*/react.createElement("tbody", null, currentLists.map(function (list, index) {
     return /*#__PURE__*/react.createElement("tr", {
-      key: flow.id
+      key: list.id
     }, /*#__PURE__*/react.createElement("td", null, /*#__PURE__*/react.createElement("input", {
       type: "checkbox",
-      checked: flow.is_checked,
+      checked: list.is_checked,
       onChange: function onChange(e) {
-        toggleSelect(flow.id);
+        toggleSelect(list.id);
       }
-    })), /*#__PURE__*/react.createElement("td", null, " ", flow.name, " "), /*#__PURE__*/react.createElement("td", {
+    })), /*#__PURE__*/react.createElement("td", null, " ", list.name, " "), /*#__PURE__*/react.createElement("td", {
       className: 'status-col'
-    }, /*#__PURE__*/react.createElement("p", null, flow.status, /*#__PURE__*/react.createElement("br", null), flow.date)), /*#__PURE__*/react.createElement("td", null, /*#__PURE__*/react.createElement("a", {
+    }, /*#__PURE__*/react.createElement("p", null, list.status, /*#__PURE__*/react.createElement("br", null), list.date)), /*#__PURE__*/react.createElement("td", null, /*#__PURE__*/react.createElement("a", {
       href: "#",
       onClick: function onClick(e) {
-        editRow(flow.id, e);
+        editRow(list.id, e);
       }
     }, " Edit "), /*#__PURE__*/react.createElement("span", {
       className: 'action-divider'
@@ -1628,7 +1628,7 @@ var Table = function Table() {
     className: 'pagination'
   }, /*#__PURE__*/react.createElement("div", {
     className: 'pagination-info'
-  }, "Showing results ", indexOfFirstFlow + 1, " - ", indexOfLastFlow, " out of ", makeTextPlural(flowState.length, 'flow', 'flows', true)), /*#__PURE__*/react.createElement("div", {
+  }, "Showing results ", indexOfFirstList + 1, " - ", indexOfLastList, " out of ", makeTextPlural(listState.length, 'list', 'lists', true)), /*#__PURE__*/react.createElement("div", {
     className: 'links'
   }, /*#__PURE__*/react.createElement("button", {
     onClick: handlePreviousClick
@@ -1644,12 +1644,12 @@ var Table = function Table() {
     onClick: handleNextClick
   }, " Next ")))) : /*#__PURE__*/react.createElement("div", {
     className: 'nodata-jumbotron'
-  }, /*#__PURE__*/react.createElement("h3", null, "There is no available flows to show")), /*#__PURE__*/react.createElement(elements_TableAction, null));
+  }, /*#__PURE__*/react.createElement("h3", null, "There is no available lists to show")), /*#__PURE__*/react.createElement(elements_TableAction, null));
 };
 
 /* harmony default export */ const elements_Table = (Table);
 ;// CONCATENATED MODULE: ./src/Data.js
-var defaultFlows = [{
+var defaultLists = [{
   id: 1,
   is_checked: false,
   name: 'When Users Registered',
@@ -1770,7 +1770,7 @@ var defaultFlows = [{
   status: 'Published',
   date: '2021-08-09 08:20:32'
 }];
-/* harmony default export */ const Data = (defaultFlows);
+/* harmony default export */ const Data = (defaultLists);
 ;// CONCATENATED MODULE: ./src/reducer.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || reducer_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -1796,55 +1796,55 @@ var reducer = function reducer(state, action) {
   switch (action.type) {
     case 'toggle_select':
       var input_id = action.playload.select_id;
-      return state.map(function (flow) {
-        if (input_id === flow.id) {
-          return _objectSpread(_objectSpread({}, flow), {}, {
-            is_checked: !flow.is_checked
+      return state.map(function (list) {
+        if (input_id === list.id) {
+          return _objectSpread(_objectSpread({}, list), {}, {
+            is_checked: !list.is_checked
           });
         }
 
-        return flow;
+        return list;
       });
 
     case 'toggle_all':
-      return state.map(function (flow) {
-        return _objectSpread(_objectSpread({}, flow), {}, {
+      return state.map(function (list) {
+        return _objectSpread(_objectSpread({}, list), {}, {
           is_checked: action.checked
         });
       });
 
-    case 'add_new_flow':
-      return [].concat(_toConsumableArray(state), [action.playload.newFlow]);
+    case 'add_new_list':
+      return [].concat(_toConsumableArray(state), [action.playload.newList]);
 
     case 'bulk_action':
       if ('delete' === action.playload) {
-        return state.filter(function (flow) {
-          return !flow.is_checked;
+        return state.filter(function (list) {
+          return !list.is_checked;
         });
       }
 
       return state;
 
     case 'delete_row':
-      return [].concat(_toConsumableArray(state.slice(0, action.playload.flow_index)), _toConsumableArray(state.slice(action.playload.flow_index + 1)));
+      return [].concat(_toConsumableArray(state.slice(0, action.playload.list_index)), _toConsumableArray(state.slice(action.playload.list_index + 1)));
 
-    case 'update_flow_name':
-      var flow_index = action.playload.flow_index;
-      var flow_name = action.playload.new_name;
+    case 'update_list_name':
+      var list_index = action.playload.list_index;
+      var list_name = action.playload.new_name;
 
       var new_state = _toConsumableArray(state);
 
-      new_state[flow_index] = _objectSpread(_objectSpread({}, new_state[flow_index]), {}, {
-        name: flow_name
+      new_state[list_index] = _objectSpread(_objectSpread({}, new_state[list_index]), {}, {
+        name: list_name
       });
       return new_state;
 
-    case 'search_flows':
+    case 'search':
       var search_term = action.playload.search_term.toLowerCase();
 
       if (search_term.length) {
-        return Data.filter(function (flow) {
-          return flow.name.toLowerCase().includes(search_term);
+        return Data.filter(function (list) {
+          return list.name.toLowerCase().includes(search_term);
         });
       }
 
@@ -1889,13 +1889,13 @@ function App_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function AppWrap() {
   var _useReducer = (0,react.useReducer)(src_reducer, Data),
       _useReducer2 = App_slicedToArray(_useReducer, 2),
-      flowState = _useReducer2[0],
-      flowDispatch = _useReducer2[1];
+      listState = _useReducer2[0],
+      listDispatch = _useReducer2[1];
 
-  var template = /*#__PURE__*/react.createElement(src_FlowContext.Provider, {
+  var template = /*#__PURE__*/react.createElement(src_ListContext.Provider, {
     value: {
-      flowState: flowState,
-      flowDispatch: flowDispatch
+      listState: listState,
+      listDispatch: listDispatch
     }
   }, /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(elements_Header, null), /*#__PURE__*/react.createElement(elements_Table, null)));
   return template;

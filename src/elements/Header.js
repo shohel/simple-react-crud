@@ -1,26 +1,26 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import { useFlowContext } from '../FlowContext';
+import { useListContext } from '../ListContext';
 
 function Header() {
-	const {flowState, flowDispatch} = useFlowContext();
+	const {listState, listDispatch} = useListContext();
 
-	const addNewFlow = () => {
-		let flowName = prompt( "Enter the flow name" );
+	const addNewList = () => {
+		let listName = prompt( "Enter the list name" );
 
-		if ( !flowName || !flowName.length ) {
+		if ( !listName || !listName.length ) {
 			return;
 		}
 
-		let newFlow = {
+		let newList = {
 			id: Date.now().toString(),
 			is_checked: false,
-			name: flowName,
+			name: listName,
 			status: 'Published',
 			date: new Date().toJSON().slice(0, 19).replace('T', ' ')
 		}
 
-		flowDispatch( { type : 'add_new_flow', playload : { newFlow : newFlow } } );
+		listDispatch( { type : 'add_new_list', playload : { newList : newList } } );
 	}
 
 	const importHandler = e => {
@@ -35,7 +35,7 @@ function Header() {
 
 				let reader = new FileReader();
 				reader.onload = ( e ) => {
-					flowDispatch( {type: 'upload_json', playload: {json_data: JSON.parse( e.target.result )}} );
+					listDispatch( {type: 'upload_json', playload: {json_data: JSON.parse( e.target.result )}} );
 				};
 				reader.readAsText( e.target.files[0] );
 			},
@@ -48,18 +48,18 @@ function Header() {
 		e.preventDefault();
 
 		let a = document.createElement("a");
-		let file = new Blob( [JSON.stringify( flowState )], {type: 'text/plain'});
+		let file = new Blob( [JSON.stringify( listState )], {type: 'text/plain'});
 		a.href = URL.createObjectURL(file);
-		a.download = 'flows.json';
+		a.download = 'lists.json';
 		a.click();
 	}
 
 	const element = (
 		<div className={ styles.list_header }>
-			<h2>Flows</h2>
-			<button type="button" className={'button-primary'} onClick={ addNewFlow } > Add New</button>
+			<h2>Lists</h2>
+			<button type="button" className={'button-primary'} onClick={ addNewList } > Add New</button>
 			<button type="button" onClick={ importHandler } > Import </button>
-			<button type="button" onClick={ handleExport } > Export All ({flowState.length}) </button>
+			<button type="button" onClick={ handleExport } > Export All ({listState.length}) </button>
 		</div>
 	);
 

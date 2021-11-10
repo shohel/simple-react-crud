@@ -21,6 +21,7 @@ final class BootStrap {
 		$registrar = new Registrar();
 		$registrar->run();
 		$this->includes();
+		$this->init_wp_cli();
 
 		//Load the Plugin
 		add_action(
@@ -98,6 +99,14 @@ final class BootStrap {
 	public function includes() {
 
 		//
+	}
+
+	public function init_wp_cli() {
+		if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
+			return;
+		}
+
+		\WP_CLI::add_command( 'rdlist', RDListCLI::class );
 	}
 
 	public function loadAssets() {

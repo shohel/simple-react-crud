@@ -2,19 +2,19 @@ import React, { useReducer, useState, useEffect } from 'react';
 import Header from './elements/Header';
 import Table from './elements/Table';
 import reducer from './reducer';
-import FlowContext from './FlowContext';
-import defaultFlows from './Data'
+import ListContext from './ListContext';
+import defaultLists from './Data'
 
 function AppWrap(){
-	const [flowState, flowDispatch]  = useReducer(reducer, defaultFlows );
+	const [listState, listDispatch]  = useReducer(reducer, defaultLists );
 
 	const template = (
-		<FlowContext.Provider value={ {flowState, flowDispatch} }>
+		<ListContext.Provider value={ {listState, listDispatch} }>
 			<>
 				<Header />
 				<Table />
 			</>
-		</FlowContext.Provider>
+		</ListContext.Provider>
 	);
 
 	return template;

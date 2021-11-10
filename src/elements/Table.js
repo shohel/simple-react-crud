@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useFlowContext} from '../FlowContext';
+import {useListContext} from '../ListContext';
 import TableFilter from './TableFilter'
 import TableAction from './TableAction';
 import {makeTextPlural} from '../utils/PluralText';
@@ -7,14 +7,14 @@ import styles from './Table.module.scss';
 
 
 const Table = () => {
-	const {flowState, flowDispatch} = useFlowContext();
+	const {listState, listDispatch} = useListContext();
 
 	const perPage = 5;
-	const totalPages = Math.ceil(flowState.length / perPage );
+	const totalPages = Math.ceil(listState.length / perPage );
 	const [currentPage, setCurrentPage] = useState(1);
-	const indexOfLastFlow = currentPage * perPage;
-	const indexOfFirstFlow = indexOfLastFlow - perPage;
-	const currentFlows = flowState.slice(indexOfFirstFlow, indexOfLastFlow);
+	const indexOfLastList = currentPage * perPage;
+	const indexOfFirstList = indexOfLastList - perPage;
+	const currentLists = listState.slice(indexOfFirstList, indexOfLastList);
 
 	const pageNumbers = [];
 	for ( let page_i = 1; page_i <= totalPages; page_i++ ){
@@ -36,33 +36,33 @@ const Table = () => {
 		return;
 	}
 
-	const toggleSelect = ( flow_id ) => {
-		flowDispatch( {type: 'toggle_select', playload: {select_id: flow_id}} )
+	const toggleSelect = ( list_id ) => {
+		listDispatch( {type: 'toggle_select', playload: {select_id: list_id}} )
 	}
 
 	const toggleSelectAll = ( e ) => {
-		flowDispatch( {type: 'toggle_all', checked: e.target.checked} );
+		listDispatch( {type: 'toggle_all', checked: e.target.checked} );
 	}
 
-	const rowDelete = ( flow_index, e ) => {
+	const rowDelete = ( list_index, e ) => {
 		e.preventDefault();
-		flowDispatch( {type: 'delete_row', playload: {flow_index: flow_index}} );
+		listDispatch( {type: 'delete_row', playload: {list_index: list_index}} );
 	}
 
-	const editRow = ( flowID, e ) => {
+	const editRow = ( listID, e ) => {
 		e.preventDefault();
 
-		let flow_index = flowState.findIndex( flow => {
-			return flow.id === flowID;
+		let list_index = listState.findIndex( list => {
+			return list.id === listID;
 		} );
-		let oldFlowName = flowState[flow_index].name;
-		let flowName = prompt( "Enter the flow name", oldFlowName );
+		let oldListName = listState[list_index].name;
+		let listName = prompt( "Enter the list name", oldListName );
 
-		if ( !flowName || !flowName.length ) {
+		if ( !listName || !listName.length ) {
 			return;
 		}
 
-		flowDispatch( {type: 'update_flow_name', playload: {flow_index: flow_index, new_name: flowName}} );
+		listDispatch( {type: 'update_list_name', playload: {list_index: list_index, new_name: listName}} );
 	}
 
 	return (
@@ -70,7 +70,7 @@ const Table = () => {
 			<TableFilter/>
 			<TableAction/>
 
-			{flowState.length ?
+			{listState.length ?
 
 				<>
 					<table className={styles.table}>
@@ -90,22 +90,22 @@ const Table = () => {
 						</thead>
 
 						<tbody>
-							{currentFlows.map( ( flow, index ) => {
-								return <tr key={flow.id}>
+							{currentLists.map( ( list, index ) => {
+								return <tr key={list.id}>
 									<td>
-										<input type="checkbox" checked={flow.is_checked} onChange={e => {
-											toggleSelect( flow.id )
+										<input type="checkbox" checked={list.is_checked} onChange={e => {
+											toggleSelect( list.id )
 										}}/>
 									</td>
-									<td> {flow.name} </td>
+									<td> {list.name} </td>
 									<td className={'status-col'}>
-										<p>{flow.status}
+										<p>{list.status}
 											<br/>
-											{flow.date}
+											{list.date}
 										</p>
 									</td>
 									<td>
-										<a href="#" onClick={e => { editRow( flow.id, e ) }}> Edit </a>
+										<a href="#" onClick={e => { editRow( list.id, e ) }}> Edit </a>
 										<span className={'action-divider'}>|</span>
 										<a href="#" onClick={e => { rowDelete( index, e ) }}> Delete </a>
 									</td>
@@ -116,7 +116,7 @@ const Table = () => {
 
 					<div className={'pagination'}>
 						<div className={'pagination-info'}>
-							Showing results {indexOfFirstFlow + 1} - {indexOfLastFlow} out of { makeTextPlural( flowState.length, 'flow', 'flows', true ) }
+							Showing results {indexOfFirstList + 1} - {indexOfLastList} out of { makeTextPlural( listState.length, 'list', 'lists', true ) }
 						</div>
 						<div className={'links'}>
 							<button onClick={ handlePreviousClick }> Prev </button>
@@ -131,7 +131,7 @@ const Table = () => {
 				</>
 				:
 				<div className={'nodata-jumbotron'}>
-					<h3>There is no available flows to show</h3>
+					<h3>There is no available lists to show</h3>
 				</div>
 			}
 

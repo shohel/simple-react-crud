@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {useFlowContext} from '../FlowContext';
+import {useListContext} from '../ListContext';
 import PluralText from '../utils/PluralText';
 import styles from './TableAction.module.scss';
 
 
 const TableAction = () => {
-	const {flowState, flowDispatch} = useFlowContext();
+	const {listState, listDispatch} = useListContext();
 	const [action, setAction ] = useState( '' );
 
 	const onChangeActionHandler = e => {
@@ -16,7 +16,7 @@ const TableAction = () => {
 	const onApplyAction = e => {
 		e.preventDefault();
 
-		flowDispatch( { type: 'bulk_action', playload : action } );
+		listDispatch( { type: 'bulk_action', playload : action } );
 		setAction( '' );
 	}
 
@@ -32,8 +32,8 @@ const TableAction = () => {
 				<button onClick={ e => { onApplyAction( e ) } }> Apply </button>
 			</div>
 
-			<div className={'action-flows-count'}>
-				<PluralText count={flowState.length} singular={'Item'} plural={'Items'} show_count={true} />
+			<div className={'action-lists-count'}>
+				<PluralText count={listState.length} singular={'Item'} plural={'Items'} show_count={true} />
 			</div>
 
 		</div>

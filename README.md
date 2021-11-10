@@ -27,3 +27,6 @@ After running the following commands from the terminal, you will get an installa
 
 * `npm run build`
 * `grunt build`
+
+## Generate Random Data using WP_Cli
+Run `wp rdlist generate`
