@@ -5,6 +5,12 @@ import Table from './elements/Table';
 import reducer from './reducer';
 import ListContext from './ListContext';
 
+/**
+ * We will set pagination cache within this variable.
+ * A page should send one request to the backend.
+ * @type {*[]}
+ */
+
 let paginationCache = [];
 
 function AppWrap() {
