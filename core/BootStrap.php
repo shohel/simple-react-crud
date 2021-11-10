@@ -9,12 +9,14 @@
 namespace ReactJS\DataList;
 
 
+use ReactJS\DataList\RestAPI\Register;
 use ReactJS\DataList\ShortCode\Load;
 use ReactJS\DataList\View\Assets;
 
 final class BootStrap {
 
 	public $shortcodes;
+	public $rest_api;
 
 	public function init() {
 		//Run the registry service
@@ -61,5 +63,6 @@ final class BootStrap {
 
 	public function initComponent() {
 		$this->shortcodes = ( new Load() )->init();
+		$this->rest_api = ( new Register() )->init();
 	}
 }
