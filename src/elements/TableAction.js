@@ -33,7 +33,7 @@ const TableAction = () => {
 			</div>
 
 			<div className={'action-lists-count'}>
-				<PluralText count={listState.length} singular={'Item'} plural={'Items'} show_count={true} />
+				<PluralText count={listState.total} singular={'Item'} plural={'Items'} show_count={true} />
 			</div>
 
 		</div>

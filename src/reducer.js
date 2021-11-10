@@ -1,22 +1,34 @@
-
-import defaultLists from './Data';
-
 const reducer = (state, action) => {
+
+	const data = state.data;
+	let newData;
+
 	switch ( action.type ) {
+		case 'UPDATE' :
+			return action.playload;
+		case 'paginate':
+
+			return {...state, current_page: action.current_page};
 		case 'toggle_select':
 			let input_id = action.playload.select_id;
 
-			return state.map( list => {
-				if ( input_id === list.id ) {
+			newData = data.map( list => {
+				if ( input_id === list.list_ID ) {
+
 					return {...list, is_checked: !list.is_checked}
 				}
 				return list;
 			} );
 
+			return {...state, data: newData};
+
 		case 'toggle_all':
-			return state.map( list => {
+			newData = data.map( list => {
 				return {...list, is_checked: action.checked}
 			} );
+
+			return {...state, data: newData};
+
 		case 'add_new_list':
 
 			return [...state, ...[action.playload.newList]];
@@ -30,7 +42,16 @@ const reducer = (state, action) => {
 			}
 			return state;
 		case 'delete_row':
-			return [...state.slice( 0, action.playload.list_index ), ...state.slice( action.playload.list_index + 1 )];
+
+			newData = [...data.slice( 0, action.playload.list_index ), ...data.slice( action.playload.list_index + 1 )];
+			return {
+				...state,
+				data: newData,
+				total: (
+					state.total - 1
+				)
+			};
+
 		case 'update_list_name':
 			let list_index = action.playload.list_index;
 			let list_name = action.playload.new_name;

@@ -46,6 +46,8 @@ class Model {
 	}
 
 	public function get_limit_sql() {
+		$this->start = ( $this->current_page - 1 ) * $this->per_page;
+
 		return $this->db->prepare( " LIMIT %d, %d ", $this->start, $this->per_page );
 	}
 

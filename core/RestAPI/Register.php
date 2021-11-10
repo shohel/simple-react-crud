@@ -26,7 +26,7 @@ class Register {
 
 	public function register_get_lists() {
 		register_rest_route( $this->namespace, '/get-lists', array(
-			'methods'             => 'GET',
+			'methods'             => 'POST',
 			'callback'            => [ $this, 'get_lists' ],
 			'permission_callback' => '__return_true',
 		) );

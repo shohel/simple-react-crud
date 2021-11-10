@@ -4,21 +4,24 @@ import TableFilter from './TableFilter'
 import TableAction from './TableAction';
 import {makeTextPlural} from '../utils/PluralText';
 import styles from './Table.module.scss';
+import {remotePost} from '../utils/remoteRequest';
 
 
 const Table = () => {
 	const {listState, listDispatch} = useListContext();
 
-	const perPage = 5;
-	const totalPages = Math.ceil(listState.length / perPage );
-	const [currentPage, setCurrentPage] = useState(1);
-	const indexOfLastList = currentPage * perPage;
-	const indexOfFirstList = indexOfLastList - perPage;
-	const currentLists = listState.slice(indexOfFirstList, indexOfLastList);
+	const totalPages = listState.total_pages;
+	const [currentPage, setCurrentPage] = useState( 1 );
+
+	useEffect( () => {
+
+		listDispatch( {type: 'paginate', current_page: currentPage } )
+
+	}, [currentPage] );
 
 	const pageNumbers = [];
-	for ( let page_i = 1; page_i <= totalPages; page_i++ ){
-		pageNumbers.push(page_i);
+	for ( let page_i = 1; page_i <= totalPages; page_i ++ ) {
+		pageNumbers.push( page_i );
 	}
 
 	const handlePreviousClick = e => {
@@ -53,7 +56,7 @@ const Table = () => {
 		e.preventDefault();
 
 		let list_index = listState.findIndex( list => {
-			return list.id === listID;
+			return list.list_ID === listID;
 		} );
 		let oldListName = listState[list_index].name;
 		let listName = prompt( "Enter the list name", oldListName );
@@ -70,7 +73,7 @@ const Table = () => {
 			<TableFilter/>
 			<TableAction/>
 
-			{listState.length ?
+			{listState.total ?
 
 				<>
 					<table className={styles.table}>
@@ -90,24 +93,30 @@ const Table = () => {
 						</thead>
 
 						<tbody>
-							{currentLists.map( ( list, index ) => {
-								return <tr key={list.id}>
+							{listState.data.map( ( list, index ) => {
+								return <tr key={list.list_ID}>
 									<td>
-										<input type="checkbox" checked={list.is_checked} onChange={e => {
-											toggleSelect( list.id )
+										<input type="checkbox" checked={!!list.is_checked} onChange={e => {
+											toggleSelect( list.list_ID )
 										}}/>
 									</td>
-									<td> {list.name} </td>
+									<td> {list.list_ID} - {list.list_title} </td>
 									<td className={'status-col'}>
-										<p>{list.status}
+										<p>{list.list_status}
 											<br/>
-											{list.date}
+											{list.created_at}
 										</p>
 									</td>
 									<td>
-										<a href="#" onClick={e => { editRow( list.id, e ) }}> Edit </a>
+										<a href="#" onClick={e => {
+											editRow( list.list_ID, e )
+										}}>Edit
+										</a>
 										<span className={'action-divider'}>|</span>
-										<a href="#" onClick={e => { rowDelete( index, e ) }}> Delete </a>
+										<a href="#" onClick={e => {
+											rowDelete( index, e )
+										}}>Delete
+										</a>
 									</td>
 								</tr>
 							} )}
@@ -116,16 +125,20 @@ const Table = () => {
 
 					<div className={'pagination'}>
 						<div className={'pagination-info'}>
-							Showing results {indexOfFirstList + 1} - {indexOfLastList} out of { makeTextPlural( listState.length, 'list', 'lists', true ) }
+							Showing results {listState.from} - {listState.to} out of {makeTextPlural( listState.total,
+							'list', 'lists', true )}
 						</div>
 						<div className={'links'}>
-							<button onClick={ handlePreviousClick }> Prev </button>
+							<button onClick={handlePreviousClick}>Prev</button>
 
-							{ pageNumbers.map( ( page, pageIndex ) => {
-								return <button className={ ( currentPage === page ) ? 'active' : '' } key={pageIndex} onClick={ e => { setCurrentPage(page) } } >{page}</button>
-							} ) }
-							<button onClick={ handleNextClick } > Next </button>
-
+							{pageNumbers.map( ( page, pageIndex ) => {
+								return <button className={(
+									currentPage === page
+								) ? 'active' : ''} key={pageIndex} onClick={e => {
+									setCurrentPage( page )
+								}}>{page}</button>
+							} )}
+							<button onClick={handleNextClick}>Next</button>
 						</div>
 					</div>
 				</>

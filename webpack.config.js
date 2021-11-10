@@ -8,7 +8,7 @@ module.exports = {
 		poll: 1000,
 		ignored: /node_modules/,
 	},
-	mode: 'production',
+	mode: env_mode,
 	entry: './src/Index.js',
 	optimization: {
 		minimize: false
@@ -26,7 +26,10 @@ module.exports = {
 				use: {
 					loader: "babel-loader",
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react']
+						presets: ['@babel/preset-env', '@babel/preset-react'],
+						plugins: [
+							["@babel/transform-runtime"]
+						]
 					}
 				}
 			},

@@ -18,7 +18,7 @@ const TableFilter = () => {
 		<div className={ styles.filterWrap }>
 
 			<div className={ styles.activeTextWrap }>
-				<p>Active ({listState.length})</p>
+				<p>Active ({listState.total})</p>
 			</div>
 
 			<div className={'search-form-wrap'}>
