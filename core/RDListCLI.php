@@ -4,6 +4,15 @@ namespace ReactJS\DataList;
 
 class RDListCLI {
 
+	private $db;
+	private $table;
+
+	public function __construct() {
+		global $wpdb;
+		$this->db    = $wpdb;
+		$this->table = $wpdb->prefix . 'rd_lists';
+	}
+
 	public function generate( $args, $assoc_args ) {
 		//
 
@@ -31,24 +40,25 @@ class RDListCLI {
 				if ( empty( $administrators[0] ) ) {
 					throw new \Exception( 'There is no administrators found' );
 				}
-				$user_id = $administrators[0]->ID;
+				$user_id          = $administrators[0]->ID;
+				$current_datetime = current_time( 'mysql' );
 
 				foreach ( $generated_posts as $generated_post ) {
-					$post_arr = [
-						'post_title'   => $generated_post->title,
-						'post_content' => $generated_post->body,
-						'post_status'  => 'publish',
-						'post_author'  => $user_id,
-						'post_type'    => 'rdlist'
+					$data_arr = [
+						'user_id'     => $user_id,
+						'list_title'  => $generated_post->title,
+						'description' => $generated_post->body,
+						'list_status' => 'publish',
+						'created_at'  => $current_datetime,
+						'updated_at'  => $current_datetime,
 					];
 
-					wp_insert_post( $post_arr );
+					$this->db->insert( $this->table, $data_arr );
 				}
 			}
 		} catch ( \Exception $exception ) {
 			\WP_CLI::error( $exception->getMessage() );
 		}
-
 
 		\WP_CLI::success( 'Data generated' );
 	}
@@ -61,12 +71,9 @@ class RDListCLI {
 	 */
 
 	public function clean( $args, $assoc_args ) {
-		//Delete all posts
+		//Delete All Data
 
-		$allposts = get_posts( [ 'post_type' => 'rdlist', 'numberposts' => - 1 ] );
-		foreach ( $allposts as $eachpost ) {
-			wp_delete_post( $eachpost->ID, true );
-		}
+		$this->db->query( "DELETE FROM {$this->table} " );
 
 		\WP_CLI::success( 'All data base been deleted' );
 	}
