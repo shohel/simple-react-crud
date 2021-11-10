@@ -29,6 +29,9 @@ class Assets {
 	 */
 
 	public function loadAssets() {
+		//Init Localize
+		( new Localize() )->init();
+
 		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$rtl_dir = is_rtl() ? '-rtl' : '';
 
@@ -46,22 +49,14 @@ class Assets {
 			true
 		);
 
+		$localize_strings = [
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'RDLIST_nonce_action' ),
+		];
+
+		$localize_strings = $localize_strings + apply_filters( 'rdlist_l10n', [] );
+
 		// phpcs:ignoreFile
-		wp_localize_script(
-			'reactjs-data-list',
-			'_rdlist_object',
-			[
-				'ajaxurl'               => admin_url( 'admin-ajax.php' ),
-				'nonce'                 => wp_create_nonce( 'RDLIST_nonce_action' ),
-				'wrong_message'         => __(
-					'Sorry! Something went wrong, pleas try again later',
-					'reactjs-data-list'
-				),
-				'fetching_user_message' => __(
-					'Please wait, fetching the users details',
-					'reactjs-data-list'
-				),
-			]
-		);
+		wp_localize_script( 'reactjs-data-list', '_rdlist_object', $localize_strings );
 	}
 }
