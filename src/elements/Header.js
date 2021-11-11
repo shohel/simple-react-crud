@@ -1,26 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import Modal from './Modal';
 import styles from './Header.module.scss';
 import { useListContext } from '../ListContext';
 
 function Header() {
+
+	const [showModal, setShowModal] = useState( false );
 	const {listState, listDispatch} = useListContext();
 
-	const addNewList = () => {
-		let listName = prompt( "Enter the list name" );
+	const addNewList = ( e ) => {
+		setShowModal( !showModal );
+	}
 
-		if ( !listName || !listName.length ) {
-			return;
-		}
-
-		let newList = {
-			id: Date.now().toString(),
-			is_checked: false,
-			name: listName,
-			status: 'Published',
-			date: new Date().toJSON().slice(0, 19).replace('T', ' ')
-		}
-
-		listDispatch( { type : 'add_new_list', playload : { newList : newList } } );
+	const handleModalClose = () => {
+		setShowModal( !showModal );
 	}
 
 	const importHandler = e => {
@@ -41,25 +34,26 @@ function Header() {
 			},
 			false,
 		)
-		inputFileElement.click();
-	}
+		inputFileElement.click()
+	};
 
 	const handleExport = e => {
 		e.preventDefault();
 
-		let a = document.createElement("a");
-		let file = new Blob( [JSON.stringify( listState )], {type: 'text/plain'});
-		a.href = URL.createObjectURL(file);
+		let a = document.createElement( "a" );
+		let file = new Blob( [JSON.stringify( listState )], {type: 'text/plain'} );
+		a.href = URL.createObjectURL( file );
 		a.download = 'lists.json';
 		a.click();
 	}
 
 	const element = (
-		<div className={ styles.list_header }>
+		<div className={styles.list_header}>
 			<h2>Lists</h2>
-			<button type="button" className={'button-primary'} onClick={ addNewList } > Add New</button>
-			<button type="button" onClick={ importHandler } > Import </button>
-			<button type="button" onClick={ handleExport } > Export All ({listState.length}) </button>
+			<button type="button" className={'button-primary'} onClick={addNewList}>Add New</button>
+			<button type="button" onClick={importHandler}>Import</button>
+			<button type="button" onClick={handleExport}>Export All ({listState.length})</button>
+			{ showModal && <Modal show={true} handle_close={handleModalClose} /> }
 		</div>
 	);
 

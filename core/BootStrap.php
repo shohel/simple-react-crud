@@ -9,6 +9,7 @@
 namespace ReactJS\DataList;
 
 
+use ReactJS\DataList\Admin\Menu;
 use ReactJS\DataList\RestAPI\Register;
 use ReactJS\DataList\ShortCode\Load;
 use ReactJS\DataList\View\Assets;
@@ -37,7 +38,8 @@ final class BootStrap {
 		$this->initComponent();
 
 		if ( is_admin() ) {
-			//
+			$adminMenu = new Menu();
+			add_action( 'admin_menu', [ $adminMenu, 'addMenuItems' ] );
 		}
 
 		do_action( 'rdlist_after_init' );
@@ -63,6 +65,6 @@ final class BootStrap {
 
 	public function initComponent() {
 		$this->shortcodes = ( new Load() )->init();
-		$this->rest_api = ( new Register() )->init();
+		$this->rest_api   = ( new Register() )->init();
 	}
 }

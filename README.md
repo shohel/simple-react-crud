@@ -30,3 +30,9 @@ After running the following commands from the terminal, you will get an installa
 
 ## Generate Random Data using WP_Cli
 Run `wp rdlist generate`
+
+## Shortcode
+
+Use the below shortcode at any place to render the lists
+
+`[data-list-placeholder]`
