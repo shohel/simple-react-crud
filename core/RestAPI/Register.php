@@ -37,11 +37,13 @@ class Register {
 		$list_model = new DataList();
 
 		$current_page = (int) $request->get_param( 'current_page' );
+		$search_term = $request->get_param( 'search_term' );
 		if ( $current_page ) {
 			$list_model->current_page = $current_page;
 		}
+		$list_model->search_term = $search_term;
 
-		return $this->send_response( $list_model->paginate() );
+		return $this->send_response( array_merge( [ 'success' => true ], $list_model->paginate() ) );
 	}
 
 	public function send_response( $data ) {

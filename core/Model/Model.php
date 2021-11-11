@@ -25,6 +25,7 @@ class Model {
 	public $start;
 	public $per_page;
 	public $search_term;
+	public $search_sql;
 	public $current_page;
 
 	public function __construct() {
@@ -42,6 +43,7 @@ class Model {
 		$this->start        = 0;
 		$this->per_page     = 10;
 		$this->search_term  = '';
+		$this->search_sql   = '';
 		$this->current_page = 1;
 	}
 
@@ -65,6 +67,7 @@ class Model {
 			'per_page'     => intval( $this->per_page ),
 			'current_page' => intval( $this->current_page ),
 			'total_pages'  => intval( ceil( $this->total / $this->per_page ) ),
+			'search_term'  => $this->search_term,
 			'from'         => $from,
 			'to'           => intval( $from + $this->per_page - 1 ),
 			'data'         => $data,

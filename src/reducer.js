@@ -63,13 +63,7 @@ const reducer = (state, action) => {
 		case 'search' :
 			let search_term = action.playload.search_term.toLowerCase();
 
-			if ( search_term.length ) {
-				return defaultLists.filter( list => {
-					return list.name.toLowerCase().includes( search_term );
-				} );
-			}
-
-			return defaultLists;
+			return {...state, search_term: search_term};
 
 		case 'upload_json' :
 

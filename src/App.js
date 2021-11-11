@@ -15,7 +15,7 @@ let paginationCache = [];
 
 function AppWrap() {
 
-	const [listState, listDispatch] = useReducer( reducer, [] );
+	const [listState, listDispatch] = useReducer( reducer, { search_term : '' } );
 
 	/**
 	 * As we will perform an API request, so useEffect should fire only once
@@ -23,31 +23,40 @@ function AppWrap() {
 	 */
 
 	useEffect( () => {
+		paginationCache = [];
+		listState.current_page = 1;
+
+	}, [listState.search_term] );
+
+
+	useEffect( () => {
 
 		let currentPage = parseInt( listState.current_page );
+		let search_term = listState.search_term;
 
 		if ( paginationCache[currentPage] ) {
 			listDispatch( {type: 'UPDATE', playload: paginationCache[currentPage]} );
 		} else {
-			remotePost( _rdlist_object.rest_routes.get_lists, {current_page: currentPage} ).
+			remotePost( _rdlist_object.rest_routes.get_lists, {current_page: currentPage, search_term : search_term } ).
 				then( response => {
+					response = {...response, search_term: search_term}
 
 					if ( currentPage ) {
 						paginationCache[currentPage] = response;
 					}
 
-					listDispatch( {type: 'UPDATE', playload: response} );
+					listDispatch( {type: 'UPDATE', playload: response } );
 				} );
 		}
 
-	}, [listState.current_page] );
+	}, [listState.current_page, listState.search_term] );
 
-	console.log(paginationCache);
+	console.log(listState.search_term);
 
 	const template = (
 		<ListContext.Provider value={{listState, listDispatch}}>
 			<>
-				{!!listState.total ?
+				{!!listState.success ?
 					<>
 						<Header />
 						<Table />
