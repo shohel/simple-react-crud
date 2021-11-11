@@ -51,8 +51,6 @@ function AppWrap() {
 
 	}, [listState.current_page, listState.search_term] );
 
-	console.log(listState.search_term);
-
 	const template = (
 		<ListContext.Provider value={{listState, listDispatch}}>
 			<>
