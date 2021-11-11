@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './Modal.module.scss'
 
 const Modal = ( props ) => {
@@ -12,11 +12,18 @@ const Modal = ( props ) => {
 		setShowModal( false );
 	}
 
-	document.addEventListener( 'keydown', ( event ) => {
-		if ( 'Escape' === event.key ) {
+	const handleKeyUp = e => {
+		if ( 'Escape' === e.key ) {
 			closeBtnHandle();
 		}
-	}, false );
+	}
+
+	useEffect( () => {
+		document.addEventListener( 'keydown', handleKeyUp );
+
+		return () => document.removeEventListener( "keydown", handleKeyUp );
+	} );
+
 
 	return (
 		<>
