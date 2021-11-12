@@ -23,9 +23,17 @@ class DataList extends Model {
 
 		$results = $this->db->get_results( " 
 			SELECT * 
-			FROM {$this->table} WHERE 1 = 1 {$this->search_sql} {$this->get_limit_sql()};" );
+			FROM {$this->table} WHERE 1 = 1 {$this->search_sql} {$this->order_by()} {$this->get_limit_sql()};" );
 
 		return (array) $results;
+	}
+
+	public function order_by(){
+		return " ORDER BY list_ID DESC ";
+	}
+
+	public function save( $args ){
+		return $this->db->insert( $this->table, $args );
 	}
 
 }

@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Modal.module.scss'
+import {remotePost} from '../utils/remoteRequest';
+import {useListContext} from '../ListContext';
 
 const Modal = ( props ) => {
 
+	const {listState, listDispatch} = useListContext();
 	const [showModal, setShowModal] = useState( !!props.show );
+	const [data, setData] = useState( {list_title: '', description: ''} );
 
 	const closeBtnHandle = e => {
 		if ( props.handle_close ) {
@@ -24,6 +28,22 @@ const Modal = ( props ) => {
 		return () => document.removeEventListener( "keydown", handleKeyUp );
 	} );
 
+	const handleTitle = e => {
+		setData( {...data, list_title: e.target.value} );
+	}
+
+	const handleDescription = e => {
+		setData( {...data, description: e.target.value} );
+	}
+
+	const handleSave = e => {
+
+		remotePost( _rdlist_object.rest_routes.create_list, {...data} ).
+			then( response => {
+				listDispatch( {type: 'UPDATE', playload: response} );
+				closeBtnHandle();
+			} );
+	}
 
 	return (
 		<>
@@ -43,21 +63,21 @@ const Modal = ( props ) => {
 					</div>
 
 					<div className={styles.modalBody}>
-						<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-							egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+						<div className={styles.formGroup}>
+							<label> {_rdlist_object.form.title} </label>
+							<input type="text" className={styles.formControl} defaultValue={data.list_title}  onKeyDown={handleTitle}/>
+						</div>
 
-							Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-							egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-							Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-							egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-						</p>
+						<div className={styles.formGroup}>
+							<label> {_rdlist_object.form.description} </label>
+							<textarea className={styles.formControl}
+							          onKeyDown={handleDescription} defaultValue={data.description}></textarea>
+						</div>
 					</div>
 
 					<div className={styles.modalFooter}>
-						<button onClick={closeBtnHandle}>Cancel</button>
-						<button>Save</button>
+						<button onClick={closeBtnHandle}> {_rdlist_object.form.cancel} </button>
+						<button className={'button-primary'} onClick={handleSave}> {_rdlist_object.form.save} </button>
 					</div>
 
 				</div>

@@ -19,7 +19,6 @@ function Header() {
 	const importHandler = e => {
 		const inputFileElement = document.createElement( 'input' )
 		inputFileElement.setAttribute( 'type', 'file' )
-		//inputFileElement.setAttribute( 'multiple', 'true' )
 		inputFileElement.setAttribute( 'accept', '.json' )
 
 		inputFileElement.addEventListener(
