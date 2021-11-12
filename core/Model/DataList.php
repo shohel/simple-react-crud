@@ -28,12 +28,19 @@ class DataList extends Model {
 		return (array) $results;
 	}
 
-	public function order_by(){
+	public function order_by() {
 		return " ORDER BY list_ID DESC ";
 	}
 
-	public function save( $args ){
-		return $this->db->insert( $this->table, $args );
+	public function save( $args ) {
+		if ( empty( $args['list_ID'] ) ) {
+			return $this->db->insert( $this->table, $args );
+		}
+
+		$list_ID = $args['list_ID'];
+		unset( $args['list_ID'] );
+
+		return $this->db->update( $this->table, $args, [ 'list_ID' => $list_ID ] );
 	}
 
 }

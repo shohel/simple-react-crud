@@ -7,7 +7,7 @@ const Modal = ( props ) => {
 
 	const {listState, listDispatch} = useListContext();
 	const [showModal, setShowModal] = useState( !!props.show );
-	const [data, setData] = useState( {list_title: '', description: ''} );
+	const [modalData, setModalData] = useState( { ...{list_title: '', description: ''}, ...props.data } );
 
 	const closeBtnHandle = e => {
 		if ( props.handle_close ) {
@@ -29,20 +29,29 @@ const Modal = ( props ) => {
 	} );
 
 	const handleTitle = e => {
-		setData( {...data, list_title: e.target.value} );
+		setModalData( {...modalData, list_title: e.target.value} );
 	}
 
 	const handleDescription = e => {
-		setData( {...data, description: e.target.value} );
+		setModalData( {...modalData, description: e.target.value} );
 	}
 
 	const handleSave = e => {
+		if ( modalData.list_ID ) {
 
-		remotePost( _rdlist_object.rest_routes.create_list, {...data} ).
-			then( response => {
-				listDispatch( {type: 'UPDATE', playload: response} );
-				closeBtnHandle();
-			} );
+			remotePost( _rdlist_object.rest_routes.update_list, {...modalData} ).
+				then( response => {
+
+					listDispatch( {type: 'edit_list', playload: {...modalData} } );
+					closeBtnHandle();
+				} );
+		} else {
+			remotePost( _rdlist_object.rest_routes.create_list, {...modalData} ).
+				then( response => {
+					listDispatch( {type: 'UPDATE', playload: response} );
+					closeBtnHandle();
+				} );
+		}
 	}
 
 	return (
@@ -65,13 +74,13 @@ const Modal = ( props ) => {
 					<div className={styles.modalBody}>
 						<div className={styles.formGroup}>
 							<label> {_rdlist_object.form.title} </label>
-							<input type="text" className={styles.formControl} defaultValue={data.list_title}  onKeyDown={handleTitle}/>
+							<input type="text" className={styles.formControl} defaultValue={modalData.list_title}  onKeyUp={handleTitle}/>
 						</div>
 
 						<div className={styles.formGroup}>
 							<label> {_rdlist_object.form.description} </label>
 							<textarea className={styles.formControl}
-							          onKeyDown={handleDescription} defaultValue={data.description}></textarea>
+							          onKeyUp={handleDescription} defaultValue={modalData.description}></textarea>
 						</div>
 					</div>
 

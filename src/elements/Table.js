@@ -3,12 +3,13 @@ import {useListContext} from '../ListContext';
 import TableFilter from './TableFilter'
 import TableAction from './TableAction';
 import {makeTextPlural} from '../utils/PluralText';
+import Modal from './Modal';
 import styles from './Table.module.scss';
-import {remotePost} from '../utils/remoteRequest';
-
 
 const Table = () => {
 	const {listState, listDispatch} = useListContext();
+	const [showModal, setShowModal] = useState( false );
+	const [modalData, setModalData] = useState( {} );
 
 	const totalPages = listState.total_pages;
 	const [currentPage, setCurrentPage] = useState( 1 );
@@ -55,17 +56,19 @@ const Table = () => {
 	const editRow = ( listID, e ) => {
 		e.preventDefault();
 
-		let list_index = listState.findIndex( list => {
+		let getListIndex = listState.data.findIndex( list => {
 			return list.list_ID === listID;
 		} );
-		let oldListName = listState[list_index].name;
-		let listName = prompt( "Enter the list name", oldListName );
 
-		if ( !listName || !listName.length ) {
-			return;
-		}
+		let getListObj = listState.data[getListIndex];
 
-		listDispatch( {type: 'update_list_name', playload: {list_index: list_index, new_name: listName}} );
+		setModalData( getListObj );
+
+		setShowModal( true );
+	}
+
+	const handleModalClose = () => {
+		setShowModal( !showModal );
 	}
 
 	return (
@@ -100,7 +103,7 @@ const Table = () => {
 											toggleSelect( list.list_ID )
 										}}/>
 									</td>
-									<td> {list.list_ID} - {list.list_title} </td>
+									<td> {list.list_title} </td>
 									<td className={'status-col'}>
 										<p>{list.list_status}
 											<br/>
@@ -112,7 +115,7 @@ const Table = () => {
 											editRow( list.list_ID, e )
 										}}>Edit
 										</a>
-										<span className={'action-divider'}>|</span>
+										<span className={styles.actionDivider}>|</span>
 										<a href="#" onClick={e => {
 											rowDelete( index, e )
 										}}>Delete
@@ -122,6 +125,8 @@ const Table = () => {
 							} )}
 						</tbody>
 					</table>
+
+					{ showModal && <Modal show={true} data={modalData} handle_close={handleModalClose} /> }
 
 					<div className={'pagination'}>
 						<div className={'pagination-info'}>

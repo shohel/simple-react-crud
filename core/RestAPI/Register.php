@@ -35,6 +35,11 @@ class Register {
 			'callback'            => [ $this, 'create_list' ],
 			'permission_callback' => '__return_true',
 		) );
+		register_rest_route( $this->namespace, '/update-list', array(
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'update_list' ],
+			'permission_callback' => '__return_true',
+		) );
 	}
 
 	public function get_lists( WP_REST_Request $request ) {
@@ -74,6 +79,28 @@ class Register {
 		return $this->send_response( array_merge( [ 'success' => true ], $list_model->paginate() ) );
 	}
 
+	public function update_list( WP_REST_Request $request ) {
+		$list_ID       = sanitize_text_field( $request->get_param( 'list_ID' ) );
+		$list_title       = sanitize_text_field( $request->get_param( 'list_title' ) );
+		$description      = sanitize_text_field( $request->get_param( 'description' ) );
+
+		if ( empty( $list_title ) ) {
+			return $this->send_response( [ 'success' => false ] );
+		}
+
+		$list_data = [
+			'list_ID'  => $list_ID,
+			'list_title'  => $list_title,
+			'description' => $description,
+			'updated_at'  => current_time( 'mysql' ),
+		];
+
+		$list_model = new DataList();
+		$list_model->save( $list_data );
+
+		return $this->send_response( array_merge( [ 'success' => true ] ) );
+	}
+
 	public function send_response( $data ) {
 		return new WP_REST_Response( $data, 200 );
 	}
@@ -82,6 +109,7 @@ class Register {
 		$l10n['rest_routes'] = [
 			'get_lists'   => $this->rest_url( 'get-lists' ),
 			'create_list' => $this->rest_url( 'create-list' ),
+			'update_list' => $this->rest_url( 'update-list' ),
 		];
 
 		return $l10n;

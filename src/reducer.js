@@ -52,12 +52,15 @@ const reducer = (state, action) => {
 				)
 			};
 
-		case 'update_list_name':
-			let list_index = action.playload.list_index;
-			let list_name = action.playload.new_name;
+		case 'edit_list':
 
-			let new_state = [...state];
-			new_state[list_index] = {...new_state[list_index], name: list_name}
+			let getListIndex = state.data.findIndex( list => {
+				return list.list_ID === action.playload.list_ID;
+			} );
+
+			let new_state = {...state};
+			new_state.data[getListIndex] = {...action.playload}
+
 			return new_state;
 
 		case 'search' :
