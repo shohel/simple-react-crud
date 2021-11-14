@@ -40,6 +40,23 @@ class Register {
 			'callback'            => [ $this, 'update_list' ],
 			'permission_callback' => '__return_true',
 		) );
+
+		/**
+		 * Form Builder
+		 */
+
+		register_rest_route( $this->namespace, '/save-form-fields', array(
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'save_form_fields' ],
+			'permission_callback' => '__return_true',
+		) );
+
+
+		register_rest_route( $this->namespace, '/get-form-fields', array(
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'get_form_fields' ],
+			'permission_callback' => '__return_true',
+		) );
 	}
 
 	public function get_lists( WP_REST_Request $request ) {
@@ -101,6 +118,29 @@ class Register {
 		return $this->send_response( array_merge( [ 'success' => true ] ) );
 	}
 
+	/**
+	 * Save form fields
+	 *
+	 * @param  WP_REST_Request  $request
+	 *
+	 * @return WP_REST_Response
+	 */
+
+	public function save_form_fields( WP_REST_Request $request ) {
+		$fields = sanitize_text_field( $request->get_param( 'fields' ) );
+
+		update_option( 'rdlist_form_fields', $fields );
+
+		return $this->send_response( [ 'success' => true ] );
+	}
+
+	public function get_form_fields(){
+		$fields = get_option( 'rdlist_form_fields', '[]' );
+
+		return $this->send_response( [ 'success' => true, 'fields' => wp_unslash( $fields ) ] );
+	}
+
+
 	public function send_response( $data ) {
 		return new WP_REST_Response( $data, 200 );
 	}
@@ -110,6 +150,8 @@ class Register {
 			'get_lists'   => $this->rest_url( 'get-lists' ),
 			'create_list' => $this->rest_url( 'create-list' ),
 			'update_list' => $this->rest_url( 'update-list' ),
+			'save_form_fields' => $this->rest_url( 'save-form-fields' ),
+			'get_form_fields' => $this->rest_url( 'get-form-fields' ),
 		];
 
 		return $l10n;

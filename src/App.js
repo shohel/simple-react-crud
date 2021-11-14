@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import {remotePost} from './utils/remoteRequest';
+import DynamicForm from './elements/DynamicForm';
 import Header from './elements/Header';
 import Table from './elements/Table';
 import reducer from './reducer';
@@ -16,6 +17,7 @@ let paginationCache = [];
 function AppWrap() {
 
 	const [listState, listDispatch] = useReducer( reducer, {search_term: ''} );
+	const [defaultPage, setDefaultPage] = useState( 'form' );
 
 	/**
 	 * As we will perform an API request, so useEffect should fire only once
@@ -51,15 +53,31 @@ function AppWrap() {
 
 	}, [listState.current_page, listState.search_term] );
 
+
 	const template = (
 		<ListContext.Provider value={{listState, listDispatch}}>
 			<>
+				<a href={'#'} style={{marginBottom: '10px', display: 'block'}} onClick={e => {
+					e.preventDefault();
 
-				<Header/>
-				{!!listState.success ?
-					<Table/>
-					: <p>Waiting for the API response</p>
+					(
+						'list' === defaultPage
+					) ? setDefaultPage( 'form' ) : setDefaultPage( 'list' );
+				}}>Dynamic Form Page
+				</a>
+
+				{'list' === defaultPage ?
+					<>
+						<Header/>
+						{!!listState.success ?
+							<Table/>
+							: <p>Waiting for the API response</p>
+						}
+					</>
+					:
+					<DynamicForm/>
 				}
+
 			</>
 		</ListContext.Provider>
 	);
