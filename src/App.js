@@ -59,11 +59,15 @@ function AppWrap() {
 			<>
 				<a href={'#'} style={{marginBottom: '10px', display: 'block'}} onClick={e => {
 					e.preventDefault();
-
 					(
 						'list' === defaultPage
 					) ? setDefaultPage( 'form' ) : setDefaultPage( 'list' );
-				}}>Dynamic Form Page
+				}}>
+
+					<span>
+						{ ('list' === defaultPage) ? 'List Table Page' : 'Dynamic Form Page' }
+					</span>
+
 				</a>
 
 				{'list' === defaultPage ?
@@ -75,7 +79,7 @@ function AppWrap() {
 						}
 					</>
 					:
-					<DynamicForm/>
+					<DynamicForm />
 				}
 
 			</>
