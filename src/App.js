@@ -17,7 +17,7 @@ let paginationCache = [];
 function AppWrap() {
 
 	const [listState, listDispatch] = useReducer( reducer, {search_term: ''} );
-	const [defaultPage, setDefaultPage] = useState( 'form' );
+	const [defaultPage, setDefaultPage] = useState( 'list' );
 
 	/**
 	 * As we will perform an API request, so useEffect should fire only once
@@ -65,7 +65,7 @@ function AppWrap() {
 				}}>
 
 					<span>
-						{ ('list' === defaultPage) ? 'List Table Page' : 'Dynamic Form Page' }
+						{ ('list' === defaultPage) ? 'Dynamic Form Page' : 'List Table Page' }
 					</span>
 
 				</a>
